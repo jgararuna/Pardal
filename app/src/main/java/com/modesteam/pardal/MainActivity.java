@@ -1,6 +1,7 @@
 package com.modesteam.pardal;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -50,6 +51,18 @@ public class MainActivity extends ActionBarActivity
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
+
+//        Fragment firstFragment;
+//
+//        // In case this activity was started with special instructions from an
+//        // Intent, pass the Intent's extras to the fragment as arguments
+//        firstFragment = getSupportFragmentManager().findFragmentById(R.layout.fragment_blank);
+//        //firstFragment.setArguments(getIntent().getExtras());
+//System.out.println(firstFragment);
+//        // Add the fragment to the 'fragment_container' FrameLayout
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.container, firstFragment).commit();
+
     }
 
     @Override
@@ -77,7 +90,7 @@ public class MainActivity extends ActionBarActivity
 
     public void restoreActionBar() {
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
+        //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
@@ -121,11 +134,14 @@ public class MainActivity extends ActionBarActivity
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        private static int numberSection;
+
         /**
          * Returns a new instance of this fragment for the given section
          * number.
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
+            numberSection = sectionNumber;
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -139,7 +155,12 @@ public class MainActivity extends ActionBarActivity
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            View rootView;
+            if (numberSection==1) {
+                rootView = inflater.inflate(R.layout.fragment_blank, container, false);
+            }else{
+                rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            }
             return rootView;
         }
 
