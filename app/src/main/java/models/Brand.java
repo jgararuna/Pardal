@@ -9,7 +9,6 @@ import helpers.Condition;
 import helpers.GenericPersistence;
 import libraries.NotNullableException;
 
-
 @Entity(table="brand",primaryKey = "id")
 public class Brand {
 
