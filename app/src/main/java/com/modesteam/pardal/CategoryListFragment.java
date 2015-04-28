@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 
 import com.modesteam.pardal.category.CategoryContent;
-import com.modesteam.pardal.dummy.DummyContent;
 
 /**
  * A fragment representing a list of Items.
@@ -120,7 +119,7 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
             // fragment is attached to one) that an item has been selected.
             switch (position){
                 case 5:
-                    mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, BrandFragment.newInstance("", ""));
+                    mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, BrandListFragment.newInstance("", ""));
                     break;
             }
 

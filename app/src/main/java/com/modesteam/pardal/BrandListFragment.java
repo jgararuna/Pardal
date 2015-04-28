@@ -16,8 +16,8 @@ import android.widget.TextView;
 import com.modesteam.pardal.dummy.DummyContent;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
+import helpers.Condition;
 import models.Brand;
 
 /**
@@ -29,7 +29,7 @@ import models.Brand;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class BrandFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class BrandListFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -54,8 +54,8 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
     private ListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
-    public static BrandFragment newInstance(String param1, String param2) {
-        BrandFragment fragment = new BrandFragment();
+    public static BrandListFragment newInstance(String param1, String param2) {
+        BrandListFragment fragment = new BrandListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -67,7 +67,7 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public BrandFragment() {
+    public BrandListFragment() {
     }
 
     @Override
@@ -127,7 +127,7 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(Integer.parseInt(DummyContent.ITEMS.get(position).id), BrandFragment.newInstance("",""));
+            mListener.onFragmentInteraction(Integer.parseInt(DummyContent.ITEMS.get(position).id), BrandDetailFragment.newInstance("", ""));
         }
     }
 
