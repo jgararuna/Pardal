@@ -100,11 +100,11 @@ public class State {
 	
 	public ArrayList<City> getCities() throws ClassNotFoundException, SQLException{
 		GenericPersistence gP = new GenericPersistence();
-		ArrayList<City> cities = new ArrayList<City>();
+		ArrayList<City> beans = new ArrayList<City>();
 		for (Object bean : gP.selectMany(this, new City())) {
-			cities.add((City)bean);
+			beans.add((City)bean);
 		}
-		return cities;
+		return beans;
 	}
 
 	@Override
