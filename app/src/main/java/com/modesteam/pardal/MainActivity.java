@@ -18,9 +18,18 @@ import android.support.v4.widget.DrawerLayout;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.sql.SQLException;
+
+import helpers.Condition;
+import helpers.Joiner;
+import helpers.Operator;
+import models.Brand;
+import models.City;
+import models.State;
+
 
 public class MainActivity extends ActionBarActivity
-        implements NavigationDrawerFragment.NavigationDrawerCallbacks {
+        implements OnFragmentInteractionListener, NavigationDrawerFragment.NavigationDrawerCallbacks {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -51,9 +60,16 @@ public class MainActivity extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
-                .commit();
+        if(position == 0){
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, CategoryListFragment.newInstance("","")).addToBackStack("")
+                    .commit();
+        } else {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, PlaceholderFragment.newInstance(position + 1)).addToBackStack("")
+                    .commit();
+        }
+
     }
 
     public void onSectionAttached(int number) {
@@ -138,6 +154,7 @@ public class MainActivity extends ActionBarActivity
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
             return rootView;
         }
 
@@ -147,6 +164,16 @@ public class MainActivity extends ActionBarActivity
             ((MainActivity) activity).onSectionAttached(
                     getArguments().getInt(ARG_SECTION_NUMBER));
         }
+
+
+    }
+
+    @Override
+    public void onFragmentInteraction(int id, Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.container, fragment).addToBackStack("")
+                .commit();
     }
 
 }

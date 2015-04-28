@@ -36,7 +36,15 @@ public class GenericPersistence extends Database {
 	public SQLiteDatabase getConnection(){
 		return this.database;
 	}
-	
+
+    public void beginTransaction(){
+        this.database.beginTransaction();
+    }
+
+    public void endTransaction(){
+        this.database.endTransaction();
+    }
+
 	public boolean insertBean(Object bean) throws SQLException, NotNullableException {
 		this.openConnection();
 		boolean result = insertBean(bean, this.database);
