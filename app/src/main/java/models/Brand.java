@@ -93,4 +93,18 @@ public class Brand {
         GenericPersistence gP = new GenericPersistence();
         return gP.deleteBean(this);
     }
+    public ArrayList<Model> getModels() throws ClassNotFoundException, SQLException{
+        GenericPersistence gP = new GenericPersistence();
+        ArrayList<Model> models = new ArrayList<Model>();
+        for (Object bean : gP.selectMany(this, new Model())) {
+            models.add((Model)bean);
+        }
+
+        return models;
+    }
+
+    @Override
+    public String toString() {
+        return "" + name;
+    }
 }

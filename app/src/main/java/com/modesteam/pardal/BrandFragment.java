@@ -15,6 +15,11 @@ import android.widget.TextView;
 
 import com.modesteam.pardal.dummy.DummyContent;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import models.Brand;
+
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -75,8 +80,14 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
         }
 
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        try {
+            mAdapter = new ArrayAdapter<Brand>(getActivity(),
+                    android.R.layout.simple_list_item_1, android.R.id.text1, Brand.getAll());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -111,7 +122,6 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
         mListener = null;
     }
 
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
@@ -133,5 +143,4 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
             ((TextView) emptyView).setText(emptyText);
         }
     }
-
 }
