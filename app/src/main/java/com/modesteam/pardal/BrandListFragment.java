@@ -13,6 +13,8 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
+import com.modesteam.pardal.category.BrandContent;
+import com.modesteam.pardal.category.CategoryContent;
 import com.modesteam.pardal.dummy.DummyContent;
 
 import java.sql.SQLException;
@@ -93,7 +95,7 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_brand, container, false);
+        View view = inflater.inflate(R.layout.fragment_brand_list, container, false);
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);
@@ -127,7 +129,7 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(Integer.parseInt(DummyContent.ITEMS.get(position).id), BrandDetailFragment.newInstance("", ""));
+                    mListener.onFragmentInteraction(BrandContent.ITEMS.get(position).id, BrandDetailFragment.newInstance("", ""));
         }
     }
 

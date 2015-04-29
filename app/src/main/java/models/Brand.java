@@ -10,6 +10,7 @@ import helpers.GenericPersistence;
 import libraries.NotNullableException;
 
 @Entity(table="brand",primaryKey = "id")
+
 public class Brand {
 
     @Column(name="_id", nullable = false)
