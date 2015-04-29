@@ -115,8 +115,8 @@ public class Type {
 
 	@Override
 	public String toString() {
-		return "Type [id=" + id + ", description=" + description + ", name="
-				+ name + "]";
+        //acentos nao estao vindo
+		return name;
 	}
 	
 	
