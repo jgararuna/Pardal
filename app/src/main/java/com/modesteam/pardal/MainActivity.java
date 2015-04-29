@@ -60,7 +60,7 @@ public class MainActivity extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        if(position == 0){
+        if(position == 2){
             fragmentManager.beginTransaction()
                     .replace(R.id.container, CategoryListFragment.newInstance("","")).addToBackStack("")
                     .commit();
@@ -170,6 +170,7 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onFragmentInteraction(int id, Fragment fragment){
+        System.out.println("aqui");
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment).addToBackStack("")
