@@ -11,9 +11,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import com.modesteam.pardal.model.ModelContent;
 
-
-import com.modesteam.pardal.dummy.DummyContent;
+import models.Model;
 
 /**
  * A fragment representing a list of Items.
@@ -74,12 +74,12 @@ public class ModelFragment extends Fragment implements AbsListView.OnItemClickLi
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        /* TODO: Change Adapter to display your content */
+        mAdapter = new ArrayAdapter<Model>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, ModelContent.ITEMS);
     }
 
-    @Override
+   @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_model, container, false);
@@ -116,7 +116,9 @@ public class ModelFragment extends Fragment implements AbsListView.OnItemClickLi
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            //mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+           // mListener.onFragmentInteraction(Integer.parseInt(ModelContent.ITEMS.get(position).id), ModelFragment.newInstance("",""));
+           Model modelSelected = ModelContent.ITEMS.get(position);
+       mListener.onFragmentInteraction(modelSelected.getId(), ModelFragment.newInstance("",""));
         }
     }
 

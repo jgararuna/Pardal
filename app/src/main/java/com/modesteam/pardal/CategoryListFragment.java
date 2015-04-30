@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.modesteam.pardal.category.CategoryContent;
 import com.modesteam.pardal.dummy.DummyContent;
+import com.modesteam.pardal.model.ModelContent;
 
 /**
  * A fragment representing a list of Items.
@@ -118,10 +119,15 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            switch (position){
-                case 5:
+            switch (position) {
+                case 3: {
+                    mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, ModelFragment.newInstance("", ""));
+                    break;
+                }
+                case 5: {
                     mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, BrandFragment.newInstance("", ""));
                     break;
+                }
             }
 
         }

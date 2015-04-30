@@ -36,4 +36,5 @@
     -->
     <item name="fragment_model" type="layout">@layout/fragment_model_list</item>
 
+
 </resources>
