@@ -13,13 +13,9 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
-import com.modesteam.pardal.category.BrandContent;
-import com.modesteam.pardal.category.CategoryContent;
-import com.modesteam.pardal.dummy.DummyContent;
 
 import java.sql.SQLException;
 
-import helpers.Condition;
 import models.Brand;
 
 /**
@@ -129,7 +125,14 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-                    mListener.onFragmentInteraction(BrandContent.ITEMS.get(position).id, BrandDetailFragment.newInstance("", ""));
+            try {
+                int posi = Brand.getAll().get(position).getId();
+                mListener.onFragmentInteraction(posi, BrandDetailFragment.newInstance(posi));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 

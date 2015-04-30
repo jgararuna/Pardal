@@ -1,22 +1,21 @@
 package com.modesteam.pardal;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.modesteam.pardal.category.BrandContent;
-
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import models.Brand;
+import models.Model;
+import models.Tickets;
 
 
 /**
@@ -29,12 +28,10 @@ import models.Brand;
 public class BrandDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String IDBrand = "idBrand";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private int idBrand;
 
 
     private OnFragmentInteractionListener mListener;
@@ -52,15 +49,13 @@ public class BrandDetailFragment extends Fragment {
      * this fragment using the provided parameters.
      *
      * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment BrandDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BrandDetailFragment newInstance(String param1, String param2) {
+    public static BrandDetailFragment newInstance(int param1) {
         BrandDetailFragment fragment = new BrandDetailFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(IDBrand, param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -73,15 +68,47 @@ public class BrandDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            idBrand = getArguments().getInt(IDBrand);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_brand_detail, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_brand_detail, container, false);
+
+        try {
+            Brand brand = Brand.get(idBrand);
+            double averageExceded=0, maximumMeasuredVelocity=0;
+            int  totalTickets=0;
+
+            ArrayList<Model> listModel = brand.getModels();
+            ArrayList<Tickets> listTickets = new ArrayList<>();
+
+            for(int i=1; i<=listModel.size(); i++){
+                listTickets = listModel.get(i).getTickets();
+            }
+            for (int i=1; i<=listTickets.size(); i++){
+                averageExceded += listTickets.get(i).getAverageExceded();
+                totalTickets += listTickets.get(i).getTotalTickets();
+                if(listTickets.get(i).getMaximumMeasuredVelocity() > maximumMeasuredVelocity) {
+                    maximumMeasuredVelocity = listTickets.get(i).getMaximumMeasuredVelocity();
+                }
+            }
+            averageExceded /=listTickets.size();
+
+            TextView textViewTotalTickets = (TextView) rootView.findViewById(R.id.textViewTotalTickets);
+            textViewTotalTickets.setText(Integer.toString(totalTickets));
+
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return rootView;
     }
 
 
