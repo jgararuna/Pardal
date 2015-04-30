@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 
 import com.modesteam.pardal.dummy.DummyContent;
+import com.modesteam.pardal.type.TypeContent;
 
 import java.sql.SQLException;
 
@@ -79,14 +80,9 @@ public class TypeFragment extends Fragment implements AbsListView.OnItemClickLis
         }
 
         // TODO: Change Adapter to display your content
-        try {
-            mAdapter = new ArrayAdapter<Type>(getActivity(),
-                    android.R.layout.simple_list_item_1, android.R.id.text1, Type.getAll());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        mAdapter = new ArrayAdapter<Type>(getActivity(),
+                    android.R.layout.simple_list_item_1, android.R.id.text1, TypeContent.ITEMS);
+
     }
 
     @Override
@@ -127,7 +123,8 @@ public class TypeFragment extends Fragment implements AbsListView.OnItemClickLis
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-           // mListener.onFragmentInteraction(Integer.parseInt(DummyContent.ITEMS.get(position).id), TypeFragment.newInstance("",""));
+            Type typeSelected = TypeContent.ITEMS.get(position);
+            mListener.onFragmentInteraction(typeSelected.getId(), TypeFragment.newInstance("",""));
         }
     }
 

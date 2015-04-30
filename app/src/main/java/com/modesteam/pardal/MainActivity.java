@@ -170,7 +170,6 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public void onFragmentInteraction(int id, Fragment fragment){
-        System.out.println("aqui");
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment).addToBackStack("")
