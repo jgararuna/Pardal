@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="com.modesteam.pardal.TypeDetailFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:layout_width="242dp"
+        android:layout_height="74dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Detalhe"
+        android:id="@+id/detalhe_textView"
+        android:layout_gravity="center_horizontal|top" />
+
+    <TextView
+        android:layout_width="369dp"
+        android:layout_height="431dp"
+        android:text="New Text"
+        android:id="@+id/detalhe_tipo_textView"
+        android:layout_gravity="center" />
+
+</FrameLayout>
