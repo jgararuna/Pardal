@@ -13,7 +13,10 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
-import com.modesteam.pardal.dummy.DummyContent;
+
+import java.sql.SQLException;
+
+import models.Brand;
 
 /**
  * A fragment representing a list of Items.
@@ -24,7 +27,7 @@ import com.modesteam.pardal.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class BrandFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class BrandListFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,8 +52,8 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
     private ListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
-    public static BrandFragment newInstance(String param1, String param2) {
-        BrandFragment fragment = new BrandFragment();
+    public static BrandListFragment newInstance(String param1, String param2) {
+        BrandListFragment fragment = new BrandListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,7 +65,7 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public BrandFragment() {
+    public BrandListFragment() {
     }
 
     @Override
@@ -75,14 +78,20 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
         }
 
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        try {
+            mAdapter = new ArrayAdapter<Brand>(getActivity(),
+                    android.R.layout.simple_list_item_1, android.R.id.text1, Brand.getAll());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_brand, container, false);
+        View view = inflater.inflate(R.layout.fragment_brand_list, container, false);
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);
@@ -111,13 +120,19 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
         mListener = null;
     }
 
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(Integer.parseInt(DummyContent.ITEMS.get(position).id), BrandFragment.newInstance("",""));
+            try {
+                int posi = Brand.getAll().get(position).getId();
+                mListener.onFragmentInteraction(posi, BrandDetailFragment.newInstance(posi));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -133,5 +148,4 @@ public class BrandFragment extends Fragment implements AbsListView.OnItemClickLi
             ((TextView) emptyView).setText(emptyText);
         }
     }
-
 }
