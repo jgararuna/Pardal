@@ -60,20 +60,28 @@ public class MainActivity extends ActionBarActivity
     public void onNavigationDrawerItemSelected(int position) {
         // update the main content by replacing fragments
         FragmentManager fragmentManager = getSupportFragmentManager();
-        if(position==0){
-            fragmentManager.beginTransaction()
+        switch(position){
+            case 0:
+                fragmentManager.beginTransaction()
                     .replace(R.id.container, WelcomeFragment.newInstance("", "")).addToBackStack("")
                     .commit();
-        }else {
-            if (position == 2) {
+                break;
+            case 2:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, CategoryListFragment.newInstance("", "")).addToBackStack("")
                         .commit();
-            } else {
+                break;
+
+            case 3:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, CreditsFragment.newInstance("", "")).addToBackStack("")
+                        .commit();
+                 break;
+            default:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, PlaceholderFragment.newInstance(position + 1)).addToBackStack("")
                         .commit();
-            }
+
         }
     }
 
