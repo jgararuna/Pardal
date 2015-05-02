@@ -127,7 +127,7 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
         if (null != mListener) {
             try {
                 int posi = State.getAll().get(position).getId();
-                mListener.onFragmentInteraction(posi, StateDetailFragment.newInstance(posi));
+                mListener.onFragmentInteraction(posi, StateDetailFragment.newInstance(posi, State.get(posi).getName()));
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {

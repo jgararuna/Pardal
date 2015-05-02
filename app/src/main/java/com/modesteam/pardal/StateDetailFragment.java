@@ -28,9 +28,11 @@ public class StateDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String IDState = "idState";
+    private static final String Name = "name";
 
     // TODO: Rename and change types of parameters
     private int idState;
+    private String name;
 
     private OnFragmentInteractionListener mListener;
 
@@ -42,10 +44,11 @@ public class StateDetailFragment extends Fragment {
      * @return A new instance of fragment StateDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StateDetailFragment newInstance(int param1) {
+    public static StateDetailFragment newInstance(int param1, String param2) {
         StateDetailFragment fragment = new StateDetailFragment();
         Bundle args = new Bundle();
         args.putInt(IDState, param1);
+        args.putString(Name, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,6 +62,7 @@ public class StateDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             idState = getArguments().getInt(IDState);
+            name = getArguments().getString(Name);
         }
     }
 
@@ -75,12 +79,15 @@ public class StateDetailFragment extends Fragment {
 
 
             ArrayList<City> listCity = state.getCities();
+            int tam = listCity.size();
             ArrayList<HighwayStretch> listHighwayStretches = new ArrayList<>();
             ArrayList<Tickets> listTickets = new ArrayList<>();
-
-            for(int i=1; i<=listCity.size(); i++){
-                listHighwayStretches = listCity.get(i).getHighwayStretches();
+/*
+            for(int i=1; i<=listCity.size(); i++) {
+                listHighwayStretches = (listCity.get(i).getHighwayStretches());
             }
+
+            int tam2 = listHighwayStretches.size();
 
             for(int i=1; i<=listHighwayStretches.size(); i++){
                 listTickets = listHighwayStretches.get(i).getTickets();
@@ -89,9 +96,13 @@ public class StateDetailFragment extends Fragment {
             for(int i=1; i<=listHighwayStretches.size(); i++){
                 totalTickets = listTickets.get(i).getTotalTickets();
             }
+*/
 
-            TextView textViewTotalTickets = (TextView) rootView.findViewById(R.id.textViewTotalTickets);
-            textViewTotalTickets.setText(Integer.toString(totalTickets));
+            TextView textViewName = (TextView) rootView.findViewById(R.id.textViewName);
+            textViewName.setText((name));
+
+            TextView textViewCities = (TextView) rootView.findViewById(R.id.textViewCities);
+            textViewCities.setText(Integer.toString(tam));
 
 
         } catch (ClassNotFoundException e) {
