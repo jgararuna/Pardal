@@ -127,7 +127,7 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
             // fragment is attached to one) that an item has been selected.
             try {
                 int posi = Brand.getAll().get(position).getId();
-                mListener.onFragmentInteraction(posi, BrandDetailFragment.newInstance(posi));
+                mListener.onFragmentInteraction(posi, BrandDetailFragment.newInstance(posi, Brand.get(posi).getName()));
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {

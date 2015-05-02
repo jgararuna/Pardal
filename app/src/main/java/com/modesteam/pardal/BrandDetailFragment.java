@@ -29,9 +29,11 @@ public class BrandDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String IDBrand = "idBrand";
+    private static final String Name = "Name";
 
     // TODO: Rename and change types of parameters
     private int idBrand;
+    private String name;
 
 
     private OnFragmentInteractionListener mListener;
@@ -52,10 +54,11 @@ public class BrandDetailFragment extends Fragment {
      * @return A new instance of fragment BrandDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BrandDetailFragment newInstance(int param1) {
+    public static BrandDetailFragment newInstance(int param1, String param2) {
         BrandDetailFragment fragment = new BrandDetailFragment();
         Bundle args = new Bundle();
         args.putInt(IDBrand, param1);
+        args.putString(Name, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -69,6 +72,7 @@ public class BrandDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             idBrand = getArguments().getInt(IDBrand);
+            name = getArguments().getString(Name);
         }
     }
 
@@ -79,27 +83,37 @@ public class BrandDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_brand_detail, container, false);
 
         try {
-            Brand brand = Brand.get(idBrand);
+            Brand brand = new Brand();
             double averageExceded=0, maximumMeasuredVelocity=0;
-            int  totalTickets=0;
+            int  totalTickets=1;
 
-            ArrayList<Model> listModel = brand.getModels();
-            ArrayList<Tickets> listTickets = new ArrayList<>();
+            ArrayList<Model> listModel = new ArrayList<>();
+            listModel.addAll(brand.get(idBrand).getModels());
+            ArrayList<ArrayList<Tickets>> listTickets = new ArrayList<>();
+            int tamanho = listModel.size();
 
-            for(int i=1; i<=listModel.size(); i++){
-                listTickets = listModel.get(i).getTickets();
+            for(int i=0; i<=listModel.size(); i++){
+                //listTickets.add(listModel.get(i).getTickets());
+                totalTickets += 1;
             }
+
+
             for (int i=1; i<=listTickets.size(); i++){
-                averageExceded += listTickets.get(i).getAverageExceded();
-                totalTickets += listTickets.get(i).getTotalTickets();
-                if(listTickets.get(i).getMaximumMeasuredVelocity() > maximumMeasuredVelocity) {
-                    maximumMeasuredVelocity = listTickets.get(i).getMaximumMeasuredVelocity();
-                }
+                int j=1;
+                //averageExceded += listTickets.get(i).get(j).getAverageExceded();
+                totalTickets += 1;
+                //if(listTickets.get(i).get(j).getMaximumMeasuredVelocity() > maximumMeasuredVelocity) {
+                 //   maximumMeasuredVelocity = listTickets.get(i).get(j).getMaximumMeasuredVelocity();
+                //}
+                j++;
             }
-            averageExceded /=listTickets.size();
+            //averageExceded /=listTickets.size();
 
             TextView textViewTotalTickets = (TextView) rootView.findViewById(R.id.textViewTotalTickets);
-            textViewTotalTickets.setText(Integer.toString(totalTickets));
+            textViewTotalTickets.setText(Integer.toString(tamanho));
+
+            TextView textViewName = (TextView) rootView.findViewById(R.id.textViewName);
+            textViewName.setText((name));
 
 
         } catch (ClassNotFoundException e) {
