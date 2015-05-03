@@ -13,8 +13,11 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
-import com.modesteam.pardal.category.CategoryContent;
 import com.modesteam.pardal.dummy.DummyContent;
+
+import java.sql.SQLException;
+
+import models.HighwayStretch;
 
 /**
  * A fragment representing a list of Items.
@@ -25,7 +28,7 @@ import com.modesteam.pardal.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class CategoryListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class HighwayStretchListFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +39,7 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
     private String mParam1;
     private String mParam2;
 
+    //
     private OnFragmentInteractionListener mListener;
 
     /**
@@ -50,8 +54,8 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
     private ListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
-    public static CategoryListFragment newInstance(String param1, String param2) {
-        CategoryListFragment fragment = new CategoryListFragment();
+    public static HighwayStretchListFragment newInstance(String param1, String param2) {
+        HighwayStretchListFragment fragment = new HighwayStretchListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,7 +67,7 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public CategoryListFragment() {
+    public HighwayStretchListFragment() {
     }
 
     @Override
@@ -75,15 +79,21 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-        // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<CategoryContent.Category>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, CategoryContent.ITEMS);
+        // Change DummyContent for HighwayStretch
+        try {
+            mAdapter = new ArrayAdapter<HighwayStretch>(getActivity(),
+                    android.R.layout.simple_list_item_1, android.R.id.text1, HighwayStretch.getAll());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_category, container, false);
+        View view = inflater.inflate(R.layout.fragment_highwaystretch, container, false);
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);
@@ -112,21 +122,19 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
         mListener = null;
     }
 
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            switch (position){
-                case 2:
-                    mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, HighwayStretchListFragment.newInstance("", ""));
-                    break;
-                case 5:
-                    mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, BrandFragment.newInstance("", ""));
-                    break;
+            try {
+                int highwayId = HighwayStretch.getAll().get(position).getId();
+                mListener.onFragmentInteraction(highwayId, HighwayStretchDetailFragment.newInstance(highwayId));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-
         }
     }
 
@@ -142,4 +150,5 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
             ((TextView) emptyView).setText(emptyText);
         }
     }
+
 }
