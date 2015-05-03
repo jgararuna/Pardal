@@ -175,12 +175,16 @@ public class Tickets {
 	}
 
 	@Override
-	public String toString() {
+	/*public String toString() {
 		return "Tickets [id=" + id + ", year=" + year + ", semester="
 				+ semester + ", totalTickets=" + totalTickets
 				+ ", velocityLimit=" + velocityLimit + ", averageExceded="
 				+ averageExceded + ", maximumMeasuredVelocity="
 				+ maximumMeasuredVelocity + ", idHighwayStretch="
 				+ idHighwayStretch + ", idModel=" + idModel + "]";
+	}*/
+	public String toString(){
+		return "Multa do Ano "+ year +", semestre "+ semester +" limite de velocidade: "+
+				velocityLimit +" velocidade mensurada: "+ maximumMeasuredVelocity;
 	}
 }
