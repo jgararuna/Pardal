@@ -20,6 +20,13 @@ public class State {
 	@Column(name="_id", nullable=false)
 	private int id;
 	private String name;
+
+    @Column(name="total_tickets", nullable=true)
+    private int totalTickets;
+    @Column(name="average_exceded", nullable=true)
+    private Double averageExceded;
+    @Column(name="maximum_measured_velocity", nullable=true)
+    private Double maximumMeasuredVelocity;
 	
 	public State() {
 		super();
@@ -47,6 +54,24 @@ public class State {
 	public void setName(String name) {
 		this.name = name;
 	}
+    public int getTotalTickets() {
+        return totalTickets;
+    }
+    public void setTotalTickets(int totalTickets) {
+        this.totalTickets = totalTickets;
+    }
+    public Double getAverageExceded() {
+        return averageExceded;
+    }
+    public void setAverageExceded(Double averageExceded) {
+        this.averageExceded = averageExceded;
+    }
+    public Double getMaximumMeasuredVelocity() {
+        return maximumMeasuredVelocity;
+    }
+    public void setMaximumMeasuredVelocity(Double maximumMeasuredVelocity) {
+        this.maximumMeasuredVelocity = maximumMeasuredVelocity;
+    }
 	
 	public boolean save() throws ClassNotFoundException, SQLException, NotNullableException{
 		GenericPersistence gP = new GenericPersistence();

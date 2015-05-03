@@ -98,11 +98,11 @@ public class Condition {
 					Entity mainEntity = mainBean.getClass().getAnnotation(Entity.class);
 					Entity entity = hasMany.entity().getAnnotation(Entity.class);
 					if(entities.contains(entity)){
-						sql += entity.table()+"."+
+						sql += entity.table()+".`"+
 								GenericPersistence.databaseColumn(
 										GenericPersistence.getField(nextBean, hasMany.foreignKey()))+
-										" = "+mainEntity.table()+"."+GenericPersistence.primaryColumn(
-												GenericPersistence.primaryField(mainBean)) + " AND ";
+										"` = "+mainEntity.table()+".`"+GenericPersistence.primaryColumn(
+												GenericPersistence.primaryField(mainBean)) + "` AND ";
 						entities.remove(entity);
 						sql += this.buildRelationshipChain(nextBean, entities);
 					}
@@ -115,10 +115,10 @@ public class Condition {
 					Entity mainEntity = mainBean.getClass().getAnnotation(Entity.class);
 					Entity entity = hasOne.entity().getAnnotation(Entity.class);
 					if(entities.contains(entity)){
-						sql += entity.table()+"."+GenericPersistence.primaryColumn(
-								GenericPersistence.primaryField(nextBean))+" = "+
-								mainEntity.table()+"."+GenericPersistence.databaseColumn(
-										GenericPersistence.getField(mainBean, hasOne.reference()))+ " AND ";
+						sql += entity.table()+".`"+GenericPersistence.primaryColumn(
+								GenericPersistence.primaryField(nextBean))+"` = "+
+								mainEntity.table()+".`"+GenericPersistence.databaseColumn(
+										GenericPersistence.getField(mainBean, hasOne.reference()))+ "` AND ";
 						entities.remove(entity);
 						sql += this.buildRelationshipChain(nextBean, entities);
 					}
