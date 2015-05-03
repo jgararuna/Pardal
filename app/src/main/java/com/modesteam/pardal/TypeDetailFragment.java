@@ -1,6 +1,7 @@
 package com.modesteam.pardal;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,20 +22,20 @@ import models.Type;
 public class TypeDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static ArrayList<Model> arrayModelsOfType;
-    private static final String NAME_TYPE = "nameType";
+    private static Type typeForDetail;
+   // private static final String NAME_TYPE = "nameType";
 
     // TODO: Rename and change types of parameters
-    private static String nameOfType;
+    //private static String nameOfType;
 
     private OnFragmentInteractionListener mListener;
 
     // TODO: Rename and change types and number of parameters
-    public static TypeDetailFragment newInstance(ArrayList<Model> arrayModels, String nameType) {
+    public static TypeDetailFragment newInstance(Type type) {
         TypeDetailFragment fragment = new TypeDetailFragment();
         Bundle args = new Bundle();
-        arrayModelsOfType = arrayModels;
-        args.putString(NAME_TYPE,nameType);
+        typeForDetail = type;
+       // args.putString(NAME_TYPE,nameType);
         fragment.setArguments(args);
         return fragment;
     }
@@ -47,7 +48,7 @@ public class TypeDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            nameOfType = getArguments().getString(NAME_TYPE);
+            //nameOfType = getArguments().getString(NAME_TYPE);
         }
     }
 
@@ -78,29 +79,42 @@ public class TypeDetailFragment extends Fragment {
     }
 
     public void detailType(View view) {
-        TextView nameType, detailInformationType;
+        TextView nameType, totalModels,totalTickets;
 
-        nameType = (TextView) view.findViewById(R.id.detalhe_textView);
-        nameType.setText("Detalhe da categoria "+ nameOfType);
+        nameType = (TextView) view.findViewById(R.id.textViewName);
+        nameType.setText(typeForDetail.getName());
+
+
 
         //Parte correta comentada, erro no banco
 
-//        Condition condition;
-//        Tickets ticket = new Tickets();
-//        ArrayList<ArrayList<Tickets>> arrayTicktes = null;
-//        for (Model model: arrayModelsOfType){
-//            condition = new Condition(ticket,"idModel",Operator.EQUAL,model.getId());
-//            try {
-//                arrayTicktes.add((Tickets.getWhere(condition)));
-//            }catch (ClassNotFoundException e) {
-//                e.printStackTrace();
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        detailInformationType = (TextView) view.findViewById(R.id.detalhe_tipo_textView);
-//        detailInformationType.setText(arrayTicktes.toString());
+       // ArrayList<ArrayList<Tickets>> arrayTicktes = null;
+        ArrayList<Tickets> arrayTicktes = null;
+        int numberTotalTickets=0;
+        ArrayList<Model> arrayModelsOfType = null;
+        String quebraLinha = System.getProperty("line.separator");
+        try {
+            arrayModelsOfType = typeForDetail.getModels();
+//            for (Model model : arrayModelsOfType) {
+//               arrayTicktes = model.getTickets();
+//                for (Tickets ticket: arrayTicktes){
+//                    numberTotalTickets = numberTotalTickets + ticket.getTotalTickets();
+//                }
+//                break;
+//           }
+            //arrayTicktes = arrayModelsOfType.get(0).getTickets();
+            //numberTotalTickets = arrayTicktes.get(0).getTotalTickets();
+        }catch(ClassNotFoundException e){
+            e.printStackTrace();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        //progress = ProgressDialog.show(this, "dialog title","dialog message", true);
+        totalModels = (TextView) view.findViewById(R.id.textViewTotalModels);
+        totalModels.setText(arrayModelsOfType.size());
+        totalTickets = (TextView) view.findViewById(R.id.textViewTotalTickets);
+        totalTickets.setText(numberTotalTickets);
 
     }
 

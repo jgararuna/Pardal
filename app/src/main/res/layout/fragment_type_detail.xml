@@ -2,21 +2,65 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.modesteam.pardal.TypeDetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:text="Detalhes:"
+    android:id="@+id/textViewDetalhes"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="48dp" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/textViewName"
+    android:textSize="18dp"
+    android:text="New Text"
+    android:layout_below="@+id/textViewDetalhes"
+    android:layout_centerHorizontal="true"
+    android:textColor="#ff2b2dff" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:text="Total Modelos:"
+    android:id="@+id/textView2"
+    android:layout_below="@+id/textViewName"
+    android:layout_alignLeft="@+id/textView4"
+    android:layout_alignStart="@+id/textView4" />
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="New Text"
+    android:id="@+id/textViewTotalModels"
+    android:layout_alignTop="@+id/textView2"
+    android:layout_alignLeft="@+id/textViewTotalTickets"
+    android:layout_alignStart="@+id/textViewTotalTickets" />
 
     <TextView
-        android:layout_width="242dp"
-        android:layout_height="74dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Detalhe"
-        android:id="@+id/detalhe_textView"
-        android:layout_gravity="center_horizontal|top" />
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:text="Total Multas:"
+    android:id="@+id/textView4"
+        android:layout_alignBottom="@+id/textViewTotalTickets"
+        android:layout_toLeftOf="@+id/textViewName"
+        android:layout_toStartOf="@+id/textViewName" />
 
-    <TextView
-        android:layout_width="369dp"
-        android:layout_height="431dp"
-        android:text="New Text"
-        android:id="@+id/detalhe_tipo_textView"
-        android:layout_gravity="center" />
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="New Text"
+    android:id="@+id/textViewTotalTickets"
+    android:layout_marginLeft="33dp"
+    android:layout_marginStart="33dp"
+    android:layout_centerVertical="true"
+    android:layout_toRightOf="@+id/textViewDetalhes"
+    android:layout_toEndOf="@+id/textViewDetalhes" />
 
 </FrameLayout>
