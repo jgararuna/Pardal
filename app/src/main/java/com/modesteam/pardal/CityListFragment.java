@@ -13,8 +13,8 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
-import com.modesteam.pardal.category.CategoryContent;
-import com.modesteam.pardal.dummy.DummyContent;
+import com.modesteam.pardal.city.CityContent;
+import models.City;
 
 /**
  * A fragment representing a list of Items.
@@ -25,7 +25,7 @@ import com.modesteam.pardal.dummy.DummyContent;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class CategoryListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class CityListFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,8 +50,8 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
     private ListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
-    public static CategoryListFragment newInstance(String param1, String param2) {
-        CategoryListFragment fragment = new CategoryListFragment();
+    public static CityListFragment newInstance(String param1, String param2) {
+        CityListFragment fragment = new CityListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,7 +63,7 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public CategoryListFragment() {
+    public CityListFragment() {
     }
 
     @Override
@@ -76,14 +76,14 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
         }
 
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<CategoryContent.Category>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, CategoryContent.ITEMS);
+        mAdapter = new ArrayAdapter<City>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, CityContent.ITEMS);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_category, container, false);
+        View view = inflater.inflate(R.layout.fragment_citylist, container, false);
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);
@@ -118,15 +118,7 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            switch (position){
-                case 1:
-                    mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, CityListFragment.newInstance("", ""));
-                    break;
-                case 5:
-                    mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, BrandFragment.newInstance("", ""));
-                    break;
-            }
-
+           // mListener.onFragmentInteraction(CityContent.ITEMS.get(position).id);
         }
     }
 
@@ -142,4 +134,5 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
             ((TextView) emptyView).setText(emptyText);
         }
     }
+
 }
