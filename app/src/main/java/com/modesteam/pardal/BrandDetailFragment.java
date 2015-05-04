@@ -83,37 +83,21 @@ public class BrandDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_brand_detail, container, false);
 
         try {
-            Brand brand = new Brand();
-            double averageExceded=0, maximumMeasuredVelocity=0;
-            int  totalTickets=1;
-
-            ArrayList<Model> listModel = new ArrayList<>();
-            listModel.addAll(brand.get(idBrand).getModels());
-            ArrayList<ArrayList<Tickets>> listTickets = new ArrayList<>();
-            int tamanho = listModel.size();
-
-            for(int i=0; i<=listModel.size(); i++){
-                //listTickets.add(listModel.get(i).getTickets());
-                totalTickets += 1;
-            }
-
-
-            for (int i=1; i<=listTickets.size(); i++){
-                int j=1;
-                //averageExceded += listTickets.get(i).get(j).getAverageExceded();
-                totalTickets += 1;
-                //if(listTickets.get(i).get(j).getMaximumMeasuredVelocity() > maximumMeasuredVelocity) {
-                 //   maximumMeasuredVelocity = listTickets.get(i).get(j).getMaximumMeasuredVelocity();
-                //}
-                j++;
-            }
-            //averageExceded /=listTickets.size();
+            Brand brand = Brand.get(idBrand);
+            double averageExceded = brand.getAverageExceded(), maximumMeasuredVelocity=brand.getMaximumMeasuredVelocity();
+            int  totalTickets=brand.getTotalTickets();
 
             TextView textViewTotalTickets = (TextView) rootView.findViewById(R.id.textViewTotalTickets);
-            textViewTotalTickets.setText(Integer.toString(tamanho));
+            textViewTotalTickets.setText(Integer.toString(totalTickets));
 
             TextView textViewName = (TextView) rootView.findViewById(R.id.textViewName);
             textViewName.setText((name));
+
+            TextView textViewAverageExceded = (TextView) rootView.findViewById(R.id.textViewAverageExceded);
+            textViewAverageExceded.setText((String.format("%.1f", averageExceded) + " km/h"));
+
+            TextView textViewMaximumMeasuredVelocity = (TextView) rootView.findViewById(R.id.textViewMaximumMeasuredVelocity);
+            textViewMaximumMeasuredVelocity.setText((Double.toString(maximumMeasuredVelocity )+ " km/h"));
 
 
         } catch (ClassNotFoundException e) {
