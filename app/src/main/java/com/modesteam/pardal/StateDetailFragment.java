@@ -74,37 +74,39 @@ public class StateDetailFragment extends Fragment {
 
         try {
             State state = State.get(idState);
-            double averageExceded = 0, maximumMeasuredVelocity=0;
-            int  totalTickets = 0;
-
-
             ArrayList<City> listCity = state.getCities();
-            int tam = listCity.size();
             ArrayList<HighwayStretch> listHighwayStretches = new ArrayList<>();
             ArrayList<Tickets> listTickets = new ArrayList<>();
-/*
-            for(int i=1; i<=listCity.size(); i++) {
-                listHighwayStretches = (listCity.get(i).getHighwayStretches());
-            }
-
-            int tam2 = listHighwayStretches.size();
-
-            for(int i=1; i<=listHighwayStretches.size(); i++){
-                listTickets = listHighwayStretches.get(i).getTickets();
-            }
-
-            for(int i=1; i<=listHighwayStretches.size(); i++){
-                totalTickets = listTickets.get(i).getTotalTickets();
-            }
-*/
+            
+            double averageExceded = state.getAverageExceded();
+            double maximumMeasuredVelocity = state.getMaximumMeasuredVelocity();
+            int totalTickets = state.getTotalTickets();
+//            int totalHighWay = 0;
+            int totalCities = listCity.size();
+//            ArrayList<City> listHighWayStrech = new ArrayList<City>();
+//
+//            for(int i = 1; i<= listCity.size(); i++)
+//            {
+//                totalHighWay += listHighWayStrech.get(i).getHighwayStretches().size();
+//            }
 
             TextView textViewName = (TextView) rootView.findViewById(R.id.textViewName);
             textViewName.setText((name));
 
             TextView textViewCities = (TextView) rootView.findViewById(R.id.textViewCities);
-            textViewCities.setText(Integer.toString(tam));
+            textViewCities.setText(Integer.toString(totalCities));
 
+          //  TextView textViewHighWays = (TextView) rootView.findViewById(R.id.textViewHighWays);
+          //  textViewHighWays.setText(Integer.toString(totalHighWay));
 
+            TextView textViewTickets = (TextView) rootView.findViewById(R.id.textViewTickets);
+            textViewTickets.setText(Integer.toString(totalTickets));
+
+            TextView textViewMaximumMeasuredVelocity = (TextView) rootView.findViewById(R.id.textViewMaximumMeasuredVelocity);
+            textViewMaximumMeasuredVelocity.setText(String.format("%.1f", maximumMeasuredVelocity) + " km/h");
+
+            TextView textViewAverageExcede = (TextView) rootView.findViewById(R.id.textViewAverageExceded);
+            textViewAverageExcede.setText(String.format("%.1f", averageExceded) + " km/h");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {

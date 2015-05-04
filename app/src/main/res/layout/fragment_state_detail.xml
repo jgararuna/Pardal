@@ -28,19 +28,19 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Total Cidades:"
         android:id="@+id/textView2"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/textViewName"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_toLeftOf="@+id/textViewName"
+        android:layout_toStartOf="@+id/textViewName" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/textViewCities"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_alignLeft="@+id/textViewHighWay"
-        android:layout_alignStart="@+id/textViewHighWay" />
+        android:layout_above="@+id/textView3"
+        android:layout_alignRight="@+id/textViewDetalhes"
+        android:layout_alignEnd="@+id/textViewDetalhes" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,19 +48,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Total Rodovias:"
         android:id="@+id/textView3"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="38dp"
         android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_alignStart="@+id/textView5" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textViewHighWay"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_alignLeft="@+id/textViewTickets"
-        android:layout_alignStart="@+id/textViewTickets" />
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -69,60 +60,67 @@
         android:text="Total Multas:"
         android:id="@+id/textView4"
         android:layout_centerVertical="true"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_alignStart="@+id/textView5" />
+        android:layout_toLeftOf="@+id/textViewDetalhes"
+        android:layout_toStartOf="@+id/textViewDetalhes" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/textViewHighWays"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_alignLeft="@+id/textViewCities"
+        android:layout_alignStart="@+id/textViewCities" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
         android:id="@+id/textViewTickets"
-        android:layout_marginLeft="33dp"
-        android:layout_marginStart="33dp"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textViewDetalhes"
-        android:layout_toEndOf="@+id/textViewDetalhes" />
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignLeft="@+id/textViewHighWays"
+        android:layout_alignStart="@+id/textViewHighWays" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Cidade mais Multada:"
+        android:text="Velocidade Maxima Registrada:"
         android:id="@+id/textView5"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="50dp"
         android:layout_below="@+id/textView4"
-        android:layout_toLeftOf="@+id/textViewTickets"
-        android:layout_toStartOf="@+id/textViewTickets" />
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textViewCityWithMoreTickets"
-        android:layout_alignTop="@+id/textView5"
-        android:layout_alignLeft="@+id/textViewHighWayWithMoreTickets"
-        android:layout_alignStart="@+id/textViewHighWayWithMoreTickets" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Rodovia mais Multada:"
+        android:text="Media Do Excesso De Velocidade"
         android:id="@+id/textView6"
-        android:layout_marginTop="33dp"
         android:layout_below="@+id/textView5"
         android:layout_alignLeft="@+id/textView5"
-        android:layout_alignStart="@+id/textView5" />
+        android:layout_alignStart="@+id/textView5"
+        android:layout_marginTop="35dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textViewHighWayWithMoreTickets"
-        android:layout_alignBottom="@+id/textView6"
+        android:id="@+id/textViewAverageExceded"
+        android:layout_above="@+id/textView6"
         android:layout_toRightOf="@+id/textView6"
         android:layout_toEndOf="@+id/textView6"
-        android:layout_marginLeft="24dp"
-        android:layout_marginStart="24dp" />
+        android:layout_marginLeft="35dp"
+        android:layout_marginStart="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/textViewMaximumMeasuredVelocity"
+        android:layout_alignTop="@+id/textView6"
+        android:layout_alignLeft="@+id/textViewAverageExceded"
+        android:layout_alignStart="@+id/textViewAverageExceded" />
 
 </RelativeLayout>

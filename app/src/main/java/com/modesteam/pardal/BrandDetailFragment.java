@@ -85,7 +85,7 @@ public class BrandDetailFragment extends Fragment {
 
             ArrayList<Model> listModel = brand.getModels();
             ArrayList<Tickets> listTickets = new ArrayList<>();
-
+/*
             for(int i=1; i<=listModel.size(); i++){
                 listTickets = listModel.get(i).getTickets();
             }
@@ -97,9 +97,9 @@ public class BrandDetailFragment extends Fragment {
                 }
             }
             averageExceded /=listTickets.size();
-
+*/
             TextView textViewTotalTickets = (TextView) rootView.findViewById(R.id.textViewTotalTickets);
-            textViewTotalTickets.setText(Integer.toString(totalTickets));
+            textViewTotalTickets.setText(Integer.toString(listModel.size()));
 
 
         } catch (ClassNotFoundException e) {
