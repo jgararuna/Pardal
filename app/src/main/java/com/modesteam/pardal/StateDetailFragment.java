@@ -81,23 +81,13 @@ public class StateDetailFragment extends Fragment {
             double averageExceded = state.getAverageExceded();
             double maximumMeasuredVelocity = state.getMaximumMeasuredVelocity();
             int totalTickets = state.getTotalTickets();
-//            int totalHighWay = 0;
             int totalCities = listCity.size();
-//            ArrayList<City> listHighWayStrech = new ArrayList<City>();
-//
-//            for(int i = 1; i<= listCity.size(); i++)
-//            {
-//                totalHighWay += listHighWayStrech.get(i).getHighwayStretches().size();
-//            }
 
             TextView textViewName = (TextView) rootView.findViewById(R.id.textViewName);
             textViewName.setText((name));
 
             TextView textViewCities = (TextView) rootView.findViewById(R.id.textViewCities);
             textViewCities.setText(Integer.toString(totalCities));
-
-          //  TextView textViewHighWays = (TextView) rootView.findViewById(R.id.textViewHighWays);
-          //  textViewHighWays.setText(Integer.toString(totalHighWay));
 
             TextView textViewTickets = (TextView) rootView.findViewById(R.id.textViewTickets);
             textViewTickets.setText(Integer.toString(totalTickets));

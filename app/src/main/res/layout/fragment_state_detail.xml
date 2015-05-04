@@ -38,20 +38,9 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/textViewCities"
-        android:layout_above="@+id/textView3"
-        android:layout_alignRight="@+id/textViewDetalhes"
-        android:layout_alignEnd="@+id/textViewDetalhes" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Total Rodovias:"
-        android:id="@+id/textView3"
-        android:layout_marginTop="38dp"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2" />
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignRight="@+id/textView6"
+        android:layout_alignEnd="@+id/textView6" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -59,19 +48,10 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Total Multas:"
         android:id="@+id/textView4"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/textViewDetalhes"
-        android:layout_toStartOf="@+id/textViewDetalhes" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textViewHighWays"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/textViewCities"
-        android:layout_alignStart="@+id/textViewCities" />
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2"
+        android:layout_marginTop="35dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,18 +60,17 @@
         android:text="Small Text"
         android:id="@+id/textViewTickets"
         android:layout_alignBottom="@+id/textView4"
-        android:layout_alignLeft="@+id/textViewHighWays"
-        android:layout_alignStart="@+id/textViewHighWays" />
+        android:layout_alignLeft="@+id/textViewCities"
+        android:layout_alignStart="@+id/textViewCities" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Velocidade Maxima Registrada:"
         android:id="@+id/textView5"
-        android:layout_marginTop="50dp"
-        android:layout_below="@+id/textView4"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/textViewDetalhes"
+        android:layout_alignEnd="@+id/textViewDetalhes" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -107,20 +86,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textViewAverageExceded"
+        android:id="@+id/textViewMaximumMeasuredVelocity"
         android:layout_above="@+id/textView6"
         android:layout_toRightOf="@+id/textView6"
-        android:layout_toEndOf="@+id/textView6"
-        android:layout_marginLeft="35dp"
-        android:layout_marginStart="35dp" />
+        android:layout_toEndOf="@+id/textView6" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textViewMaximumMeasuredVelocity"
+        android:id="@+id/textViewAverageExceded"
         android:layout_alignTop="@+id/textView6"
-        android:layout_alignLeft="@+id/textViewAverageExceded"
-        android:layout_alignStart="@+id/textViewAverageExceded" />
+        android:layout_toRightOf="@+id/textViewTickets"
+        android:layout_toEndOf="@+id/textViewTickets" />
 
 </RelativeLayout>
