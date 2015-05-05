@@ -48,4 +48,18 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         this.mActivity = getActivity();
         openDrawerOptionAt(2);
     }
+
+    public void testShouldShowListFragment(int position){
+        this.mActivity = getActivity();
+        openDrawerOptionAt(2);
+        Fragment fragment = this.mActivity.getSupportFragmentManager().findFragmentById(R.id.brand_list_view);
+        ListView listView = (ListView) fragment.getView();
+        TouchUtils.clickView(this,listView.getChildAt(position));
+    }
+
+    public void testShouldShowBrandList(){
+        this.mActivity = getActivity();
+        testShouldShowListFragment(5);
+    }
+
 }
