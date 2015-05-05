@@ -116,7 +116,8 @@ public class CityListFragment extends Fragment implements AbsListView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
-           // mListener.onFragmentInteraction(CityContent.ITEMS.get(position).id);
+            City citySelected = CityContent.ITEMS.get(position);
+            mListener.onFragmentInteraction(citySelected.getId(),CityDetailFragment.newInstance(citySelected));
         }
     }
 

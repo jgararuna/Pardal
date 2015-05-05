@@ -102,13 +102,10 @@ public class CityDetailFragment extends Fragment {
             e.printStackTrace();
         }
 
-        TextView nameCity, totalHighwayStretches,nameStateOfCity,totalTickets,maxVelocity, averageExceded;
+        TextView nameCity, totalHighwayStretches,totalTickets,maxVelocity, averageExceded;
 
         nameCity = (TextView) view.findViewById(R.id.textViewName);
-        nameCity.setText(cityForDetail.getName());
-
-        nameStateOfCity = (TextView) view.findViewById(R.id.textViewState);
-        nameStateOfCity.setText(stateOfCity.getName());
+        nameCity.setText(cityForDetail.getName()+" - "+stateOfCity.getName());
 
         totalHighwayStretches = (TextView) view.findViewById(R.id.textViewHighwayStretches);
         totalHighwayStretches.setText("" + arrayHighwayStretchesOfCity.size());
