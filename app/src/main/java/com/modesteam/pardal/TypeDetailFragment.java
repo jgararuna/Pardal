@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import helpers.Condition;
@@ -79,42 +80,33 @@ public class TypeDetailFragment extends Fragment {
     }
 
     public void detailType(View view) {
-        TextView nameType, totalModels,totalTickets;
 
-        nameType = (TextView) view.findViewById(R.id.textViewName);
-        nameType.setText(typeForDetail.getName());
-
-
-
-        //Parte correta comentada, erro no banco
-
-       // ArrayList<ArrayList<Tickets>> arrayTicktes = null;
-        ArrayList<Tickets> arrayTicktes = null;
-        int numberTotalTickets=0;
         ArrayList<Model> arrayModelsOfType = null;
-        String quebraLinha = System.getProperty("line.separator");
         try {
             arrayModelsOfType = typeForDetail.getModels();
-//            for (Model model : arrayModelsOfType) {
-//               arrayTicktes = model.getTickets();
-//                for (Tickets ticket: arrayTicktes){
-//                    numberTotalTickets = numberTotalTickets + ticket.getTotalTickets();
-//                }
-//                break;
-//           }
-            //arrayTicktes = arrayModelsOfType.get(0).getTickets();
-            //numberTotalTickets = arrayTicktes.get(0).getTotalTickets();
         }catch(ClassNotFoundException e){
             e.printStackTrace();
         }catch(SQLException e){
             e.printStackTrace();
         }
 
-        //progress = ProgressDialog.show(this, "dialog title","dialog message", true);
-        totalModels = (TextView) view.findViewById(R.id.textViewTotalModels);
-        totalModels.setText(arrayModelsOfType.size());
-        totalTickets = (TextView) view.findViewById(R.id.textViewTotalTickets);
-        totalTickets.setText(numberTotalTickets);
+        TextView nameType, totalModels,totalTickets,maxVelocity, averageExceded;
+
+        nameType = (TextView) view.findViewById(R.id.textViewName);
+        nameType.setText(typeForDetail.getName());
+
+        totalModels = (TextView) view.findViewById(R.id.textViewModels);
+        totalModels.setText(""+arrayModelsOfType.size());
+
+        totalTickets = (TextView) view.findViewById(R.id.textViewTickets);
+        totalTickets.setText(""+typeForDetail.getTotalTickets());
+
+        maxVelocity = (TextView) view.findViewById(R.id.textViewMaximumMeasuredVelocity);
+        maxVelocity.setText(typeForDetail.getMaximumMeasuredVelocity().toString());
+
+        averageExceded = (TextView) view.findViewById(R.id.textViewAverageExceded);
+        DecimalFormat f = new DecimalFormat("#.##");
+        averageExceded.setText(""+f.format(typeForDetail.getAverageExceded()));
 
     }
 
