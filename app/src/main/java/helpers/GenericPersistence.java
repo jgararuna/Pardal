@@ -275,7 +275,7 @@ public class GenericPersistence extends Database {
 
         Cursor rs = conn.rawQuery(sql, null);
         if (rs.moveToFirst())
-            count = rs.getInt(1);
+            count = rs.getInt(0);
 
         return count;
     }
