@@ -7,8 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.sql.SQLException;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 import models.City;
+import models.HighwayStretch;
+import models.Model;
+import models.State;
 
 
 /**
@@ -59,14 +67,9 @@ public class CityDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_city_detail, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        View rootView = inflater.inflate(R.layout.fragment_city_detail, container, false);
+        detailType(rootView);
+        return rootView;
     }
 
     @Override
@@ -84,6 +87,42 @@ public class CityDetailFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    public void detailType(View view) {
+
+        ArrayList<HighwayStretch> arrayHighwayStretchesOfCity = null;
+        State stateOfCity = null;
+        try {
+            arrayHighwayStretchesOfCity = cityForDetail.getHighwayStretches();
+            stateOfCity = cityForDetail.getState();
+        }catch(ClassNotFoundException e){
+            e.printStackTrace();
+        }catch(SQLException e){
+            e.printStackTrace();
+        }
+
+        TextView nameCity, totalHighwayStretches,nameStateOfCity,totalTickets,maxVelocity, averageExceded;
+
+        nameCity = (TextView) view.findViewById(R.id.textViewName);
+        nameCity.setText(cityForDetail.getName());
+
+        nameStateOfCity = (TextView) view.findViewById(R.id.textViewState);
+        nameStateOfCity.setText(stateOfCity.getName());
+
+        totalHighwayStretches = (TextView) view.findViewById(R.id.textViewHighwayStretches);
+        totalHighwayStretches.setText("" + arrayHighwayStretchesOfCity.size());
+
+        totalTickets = (TextView) view.findViewById(R.id.textViewTickets);
+        totalTickets.setText(""+cityForDetail.getTotalTickets());
+
+        maxVelocity = (TextView) view.findViewById(R.id.textViewMaximumMeasuredVelocity);
+        maxVelocity.setText(cityForDetail.getMaximumMeasuredVelocity().toString());
+
+        averageExceded = (TextView) view.findViewById(R.id.textViewAverageExceded);
+        DecimalFormat f = new DecimalFormat("#.##");
+        averageExceded.setText(""+f.format(cityForDetail.getAverageExceded()));
+
     }
 
 }

@@ -116,8 +116,6 @@ public class CityListFragment extends Fragment implements AbsListView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
-            // Notify the active callbacks interface (the activity, if the
-            // fragment is attached to one) that an item has been selected.
            // mListener.onFragmentInteraction(CityContent.ITEMS.get(position).id);
         }
     }

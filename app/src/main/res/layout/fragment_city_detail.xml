@@ -100,4 +100,15 @@
         android:layout_toRightOf="@+id/textViewTickets"
         android:layout_toEndOf="@+id/textViewTickets" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/textViewState"
+        android:layout_below="@+id/textViewDetalhes"
+        android:layout_alignLeft="@+id/textViewAverageExceded"
+        android:layout_alignStart="@+id/textViewAverageExceded"
+        android:layout_above="@+id/textView2" />
+
 </RelativeLayout>
