@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.TouchUtils;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 
 import com.modesteam.pardal.MainActivity;
@@ -49,17 +50,18 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         openDrawerOptionAt(2);
     }
 
-    public void testShouldShowListFragment(int position){
+    public void openListFragment(int position){
         this.mActivity = getActivity();
         openDrawerOptionAt(2);
-        Fragment fragment = this.mActivity.getSupportFragmentManager().findFragmentById(R.id.brand_list_view);
-        ListView listView = (ListView) fragment.getView();
+        Fragment fragment = this.mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
+        mInstrumentation.waitForIdleSync();
+        ListView listView = (ListView) ((FrameLayout) fragment.getView().findViewById(R.id.category_list_view)).getChildAt(0);
         TouchUtils.clickView(this,listView.getChildAt(position));
     }
 
     public void testShouldShowBrandList(){
         this.mActivity = getActivity();
-        testShouldShowListFragment(5);
+        openListFragment(5);
     }
 
 }
