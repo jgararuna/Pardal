@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 
 import com.modesteam.pardal.dummy.DummyContent;
+import com.modesteam.pardal.highwayStretch.HighwayStretchContent;
 
 import java.sql.SQLException;
 
@@ -80,14 +81,8 @@ public class HighwayStretchListFragment extends Fragment implements AbsListView.
         }
 
         // Change DummyContent for HighwayStretch
-        try {
-            mAdapter = new ArrayAdapter<HighwayStretch>(getActivity(),
-                    android.R.layout.simple_list_item_1, android.R.id.text1, HighwayStretch.getAll());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        mAdapter = new ArrayAdapter<HighwayStretch>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, HighwayStretchContent.ITEMS);
     }
 
     @Override
