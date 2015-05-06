@@ -1,10 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.modesteam.pardal.HighwayStretchDetailFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
+    android:layout_height="match_parent" tools:context="com.modesteam.pardal.StateDetailFragment">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +10,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -24,86 +19,77 @@
         android:layout_below="@+id/textViewDetalhes"
         android:layout_centerHorizontal="true"
         android:textColor="#ff2b2dff" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Total de Multas:"
-        android:id="@+id/textView"
+        android:id="@+id/textView2"
         android:layout_marginTop="39dp"
         android:layout_below="@+id/textViewName"
         android:layout_alignLeft="@+id/textView3"
         android:layout_alignStart="@+id/textView3" />
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mostra Total de Multas"
+        android:text="New Text"
         android:id="@+id/totalTickets"
-        android:layout_alignTop="@+id/textView2" />
-
+        android:layout_alignTop="@+id/textView2"
+        android:layout_alignLeft="@+id/averageExceded"
+        android:layout_alignStart="@+id/averageExceded" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Velocidade Limite: "
-        android:id="@+id/textView2"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/totalTickets"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Mostra Velocidade Limite "
-        android:id="@+id/velocityLimit"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/totalTickets"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Media das Velocidades Excedidas: "
+        android:text="Velocidade Limite:"
         android:id="@+id/textView3"
-        android:layout_marginStart="33dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Mostra Vel Ex"
-        android:id="@+id/averageExceded"
+        android:text="New Text"
+        android:id="@+id/velocityLimit"
         android:layout_alignTop="@+id/textView3"
-        android:layout_toRightOf="@+id/textView3"
-        android:layout_toEndOf="@+id/textView3" />
-
+        android:layout_alignLeft="@+id/totalTickets"
+        android:layout_alignStart="@+id/totalTickets" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Maior Velocidade Registrada: "
+        android:text="Media de Velocidades Excedidas:"
         android:id="@+id/textView4"
-        android:layout_below="@+id/averageExceded"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/averageExceded"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textView4"
+        android:layout_toEndOf="@+id/textView4"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Mostra Max Vel Reg"
+        android:text="Maior Velocidade Registrada:"
+        android:id="@+id/textView5"
+        android:layout_marginTop="28dp"
+        android:layout_below="@+id/textView4"
+        android:layout_toLeftOf="@+id/textView5"
+        android:layout_toStartOf="@+id/textView5" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
         android:id="@+id/maximumMeasuredVelocity"
-        android:layout_below="@+id/averageExceded"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_toEndOf="@+id/textView4" />
-
+        android:layout_alignTop="@+id/textView5"
+        android:layout_alignLeft="@+id/averageExceded"
+        android:layout_alignStart="@+id/averageExceded" />
 </RelativeLayout>
