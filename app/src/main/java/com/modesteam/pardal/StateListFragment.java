@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 
 import com.modesteam.pardal.dummy.DummyContent;
+import com.modesteam.pardal.state.StateContent;
 
 import java.sql.SQLException;
 
@@ -79,14 +80,9 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
         }
 
         // TODO: Change Adapter to display your content
-        try {
             mAdapter = new ArrayAdapter<State>(getActivity(),
-                    android.R.layout.simple_list_item_1, android.R.id.text1, State.getAll());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+                    android.R.layout.simple_list_item_1, android.R.id.text1, StateContent.ITEMS);
+
     }
 
     @Override
