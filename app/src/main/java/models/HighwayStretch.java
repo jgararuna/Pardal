@@ -147,7 +147,7 @@ public class HighwayStretch {
 
 	@Override
 	public String toString() {
-		return "HighwayStretch [id=" + id + ", number=" + number
-				+ ", kilometer=" + kilometer + ", idCity=" + idCity + "]";
+		return "BR " + number
+				+ ", kilometro " + kilometer;
 	}
 }

@@ -37,6 +37,6 @@
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
     -->
     <item name="fragment_model" type="layout">@layout/fragment_model_list</item>
-
+    <item name="fragment_highwaystretch" type="layout">@layout/fragment_highwaystretch_list</item>
 
 </resources>

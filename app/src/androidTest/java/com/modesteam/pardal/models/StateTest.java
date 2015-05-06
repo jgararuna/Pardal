@@ -19,6 +19,8 @@ public class StateTest extends TestCase {
     //Metodos Iguais por classe(Mude o nome e os parametros)
     City city1;
     State state1, state2;
+
+    @Override
     public void setUp() throws SQLException, NotNullableException, ClassNotFoundException {
         Pardal.getInstance().setDatabaseName("database_test.sqlite3.db");
         state1 = new State("DF");
