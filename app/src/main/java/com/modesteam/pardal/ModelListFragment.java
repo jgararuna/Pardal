@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.modesteam.pardal.ModelDetailFragment;
 import com.modesteam.pardal.model.ModelContent;
 import models.Model;
 
@@ -25,7 +24,7 @@ import models.Model;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class ModelFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class ModelListFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -50,8 +49,8 @@ public class ModelFragment extends Fragment implements AbsListView.OnItemClickLi
     private ListAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
-    public static ModelFragment newInstance(String param1, String param2) {
-        ModelFragment fragment = new ModelFragment();
+    public static ModelListFragment newInstance(String param1, String param2) {
+        ModelListFragment fragment = new ModelListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,7 +62,7 @@ public class ModelFragment extends Fragment implements AbsListView.OnItemClickLi
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ModelFragment() {
+    public ModelListFragment() {
     }
 
     @Override

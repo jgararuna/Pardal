@@ -129,7 +129,7 @@ public class HighwayStretchListFragment extends Fragment implements AbsListView.
             // fragment is attached to one) that an item has been selected.
             try {
                 int highwayId = HighwayStretch.getAll().get(position).getId();
-                mListener.onFragmentInteraction(highwayId, HighwayStretchDetailFragment.newInstance(highwayId));
+                mListener.onFragmentInteraction(highwayId, HighwayStretchDetailFragment.newInstance(highwayId, HighwayStretch.get(highwayId).getNumber()));
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (SQLException e) {

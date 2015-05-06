@@ -128,7 +128,7 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
                     mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, HighwayStretchListFragment.newInstance("", ""));
                     break;
                 case 3:
-                    mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, ModelFragment.newInstance("", ""));
+                    mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, ModelListFragment.newInstance("", ""));
                     break;
                 case 4:
                     mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, TypeListFragment.newInstance("", ""));
