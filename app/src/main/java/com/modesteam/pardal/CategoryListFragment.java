@@ -121,6 +121,9 @@ public class CategoryListFragment extends Fragment implements AbsListView.OnItem
                 case 0:
                     mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, StateListFragment.newInstance("", ""));
                     break;
+                case 4:
+                    mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, TypeListFragment.newInstance("", ""));
+                    break;
                 case 5:
                     mListener.onFragmentInteraction(CategoryContent.ITEMS.get(position).id, BrandListFragment.newInstance("", ""));
                     break;

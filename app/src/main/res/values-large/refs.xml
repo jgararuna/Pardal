@@ -26,5 +26,6 @@
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
     -->
     <item name="fragment_statelist" type="layout">@layout/fragment_state_grid</item>
+    <item name="fragment_type" type="layout">@layout/fragment_type_grid</item>
 
 </resources>
