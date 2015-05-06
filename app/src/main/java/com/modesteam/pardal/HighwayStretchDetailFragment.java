@@ -85,6 +85,7 @@ public class HighwayStretchDetailFragment extends Fragment {
             double velocityExceded = 0;
             double maximumVelocity = tickets.get(0).getMaximumMeasuredVelocity();
 
+
             for (Tickets ticket : tickets){
                 amountTickets += ticket.getTotalTickets();
                 velocityExceded += tickets.get(actualTicket).getAverageExceded();
@@ -92,7 +93,12 @@ public class HighwayStretchDetailFragment extends Fragment {
             }
             totalTickets.setText(Integer.toString(amountTickets));
 
-            velocityExceded = velocityExceded/tickets.size();
+
+            if(tickets.size() != 0) {
+                velocityExceded = velocityExceded / tickets.size();
+            }else{
+                velocityExceded = 0;
+            }
 
             //Imprime velocidade limite dos carros na rodovia
             TextView velocityLimit = (TextView) rootView.findViewById(R.id.velocityLimit);

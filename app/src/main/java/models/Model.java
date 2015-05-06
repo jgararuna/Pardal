@@ -151,9 +151,7 @@ public class Model {
 
 	@Override
 	public String toString() {
-		return "Model [id=" + id + ", name=" + name + ", isNational="
-				+ isNational + ", idBrand=" + idBrand + ", idType=" + idType
-				+ "]";
+		return ""+name;
 	}	
 	
 }
