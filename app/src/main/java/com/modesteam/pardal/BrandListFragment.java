@@ -13,6 +13,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
+import com.modesteam.pardal.brand.BrandContent;
 
 import java.sql.SQLException;
 
@@ -78,14 +79,9 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
         }
 
         // TODO: Change Adapter to display your content
-        try {
-            mAdapter = new ArrayAdapter<Brand>(getActivity(),
-                    android.R.layout.simple_list_item_1, android.R.id.text1, Brand.getAll());
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        mAdapter = new ArrayAdapter<Brand>(getActivity(),
+                  android.R.layout.simple_list_item_1, android.R.id.text1, BrandContent.ITEMS);
+        
     }
 
     @Override
