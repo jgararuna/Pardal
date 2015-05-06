@@ -81,7 +81,7 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
         // TODO: Change Adapter to display your content
         mAdapter = new ArrayAdapter<Brand>(getActivity(),
                   android.R.layout.simple_list_item_1, android.R.id.text1, BrandContent.ITEMS);
-        
+
     }
 
     @Override
