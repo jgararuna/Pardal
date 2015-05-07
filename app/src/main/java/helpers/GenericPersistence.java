@@ -3,6 +3,7 @@ package helpers;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
+import android.util.Log;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -290,8 +291,7 @@ public class GenericPersistence extends Database {
 
     public Object firstOrLastBean(Object bean, boolean last, SQLiteDatabase conn) throws SQLException {
         Entity entity = bean.getClass().getAnnotation(Entity.class);
-        ArrayList<Field> beanFields = new ArrayList<Field>(
-                Arrays.asList(bean.getClass().getDeclaredFields()));
+        ArrayList<Field> beanFields = getFields(bean);
         Object result = null;
         String sql = "SELECT * FROM " + entity.table() + " ORDER BY "
                 + primaryColumn(primaryField(bean));
@@ -397,6 +397,15 @@ public class GenericPersistence extends Database {
 
     //Static Helpers *****************************
 
+    public static ArrayList<Field> filterFields(ArrayList<Field> fields){
+        for(Field field : fields){
+            if(field.getName().startsWith("$")){
+                fields.remove(field);
+            }
+        }
+        return fields;
+    }
+
     public static Field getOrderField(Object bean){
         OrderBy orderBy = bean.getClass().getAnnotation(OrderBy.class);
         if(orderBy != null){
@@ -451,7 +460,7 @@ public class GenericPersistence extends Database {
     }
 
     public static ArrayList<Field> getFields(Object bean){
-        return new ArrayList<Field>(Arrays.asList(bean.getClass().getDeclaredFields()));
+        return filterFields(new ArrayList<Field>(Arrays.asList(bean.getClass().getDeclaredFields())));
     }
 
     public static Field primaryField(Object bean){
@@ -515,7 +524,10 @@ public class GenericPersistence extends Database {
 
         for (Field field : fields) {
             if (field.getAnnotation(Ignore.class) == null){
-                beanGetters.add(getGetter(field));
+                Method getter = getGetter(field);
+                if(getter != null) {
+                    beanGetters.add(getter);
+                }
             }
         }
         return beanGetters;
@@ -524,17 +536,19 @@ public class GenericPersistence extends Database {
     public static Method getGetter(Field field){
         Method result = null;
         try {
-            char[] fieldName = field.getName().trim().toCharArray();
-            String methodName = "";
-            if ((field.getType() == Boolean.class ||
-                    field.getType() == boolean.class) &&
-                    new String(fieldName).contains("is")) {
-                methodName = new String(fieldName);
-            } else {
-                fieldName[0] = Character.toUpperCase(fieldName[0]);
-                methodName = "get" + new String(fieldName);
+            if(!field.getName().startsWith("$")) {
+                char[] fieldName = field.getName().trim().toCharArray();
+                String methodName = "";
+                if ((field.getType() == Boolean.class ||
+                        field.getType() == boolean.class) &&
+                        new String(fieldName).contains("is")) {
+                    methodName = new String(fieldName);
+                } else {
+                    fieldName[0] = Character.toUpperCase(fieldName[0]);
+                    methodName = "get" + new String(fieldName);
+                }
+                result = field.getDeclaringClass().getDeclaredMethod(methodName);
             }
-            result = field.getDeclaringClass().getDeclaredMethod(methodName);
         } catch (NoSuchMethodException | SecurityException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -547,7 +561,10 @@ public class GenericPersistence extends Database {
 
         for (Field field : fields) {
             if (field.getAnnotation(Ignore.class) == null){
-                beanSetters.add(getSetter(field));
+                Method setter = getSetter(field);
+                if(setter != null) {
+                    beanSetters.add(setter);
+                }
             }
         }
         return beanSetters;
@@ -555,19 +572,21 @@ public class GenericPersistence extends Database {
 
     public static Method getSetter(Field field) {
         try {
-            char[] fieldName = field.getName().trim().toCharArray();
-            String methodName = "";
-            if ((field.getType() == Boolean.class ||
-                    field.getType() == boolean.class) &&
-                    new String(fieldName).contains("is")) {
-                methodName = new String(fieldName);
-                methodName = methodName.substring(2);
-                methodName = "set" + methodName;
-            } else {
-                fieldName[0] = Character.toUpperCase(fieldName[0]);
-                methodName = "set" + new String(fieldName);
+            if(!field.getName().startsWith("$")) {
+                char[] fieldName = field.getName().trim().toCharArray();
+                String methodName = "";
+                if ((field.getType() == Boolean.class ||
+                        field.getType() == boolean.class) &&
+                        new String(fieldName).contains("is")) {
+                    methodName = new String(fieldName);
+                    methodName = methodName.substring(2);
+                    methodName = "set" + methodName;
+                } else {
+                    fieldName[0] = Character.toUpperCase(fieldName[0]);
+                    methodName = "set" + new String(fieldName);
+                }
+                return field.getDeclaringClass().getDeclaredMethod(methodName, field.getType());
             }
-            return field.getDeclaringClass().getDeclaredMethod(methodName, field.getType());
         } catch (NoSuchMethodException | SecurityException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
