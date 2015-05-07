@@ -81,4 +81,9 @@ public class HighwayStrechtTest extends TestCase {
         highway3.delete();
         assertEquals(2, HighwayStretch.getAll().size());
     }
+
+    public void testShouldGetWhereHighwayFromDatabase() throws SQLException, ClassNotFoundException, NotNullableException {
+        Condition condition = new Condition(new HighwayStretch(),"kilometer", Operator.EQUAL,10);
+        assertEquals(highway1.getKilometer(), HighwayStretch.getWhere(condition).get(0).getKilometer());
+    }
 }
