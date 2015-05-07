@@ -1,4 +1,4 @@
-package com.modesteam.pardal;
+package com.modesteam.pardal.functionals;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;

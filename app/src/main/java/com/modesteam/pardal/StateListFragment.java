@@ -13,7 +13,6 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
-import com.modesteam.pardal.dummy.DummyContent;
 import com.modesteam.pardal.state.StateContent;
 
 import java.sql.SQLException;

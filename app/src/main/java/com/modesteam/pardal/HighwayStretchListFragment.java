@@ -12,8 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-
-import com.modesteam.pardal.dummy.DummyContent;
 import com.modesteam.pardal.highwayStretch.HighwayStretchContent;
 
 import java.sql.SQLException;
