@@ -91,7 +91,6 @@ public class ModelDetailFragment extends Fragment {
     public void createInfo(View view){
         int numeberTotalTickets=0;
         double topSpeed =0.0;
-        double averagePercentage = 0.0;
         double averageVelocity = 0.0;
         TextView nameModel = (TextView) view.findViewById(R.id.textViewName);
         try {
@@ -102,12 +101,9 @@ public class ModelDetailFragment extends Fragment {
                 if(topSpeed < ticket.getMaximumMeasuredVelocity()){
                     topSpeed = ticket.getMaximumMeasuredVelocity();
                 }
-                averagePercentage = averagePercentage + (ticket.getAverageExceded()/ticket.getVelocityLimit());
                 averageVelocity = averageVelocity + ticket.getAverageExceded();
             }
             averageVelocity = averageVelocity/tickets.size();
-            averagePercentage = averagePercentage/tickets.size();
-            averagePercentage = averagePercentage*100;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException s) {
@@ -117,8 +113,6 @@ public class ModelDetailFragment extends Fragment {
         totalTicketsLabel.setText(Integer.toString(numeberTotalTickets));
         TextView topSpeedLabel = (TextView) view.findViewById(R.id.textViewTopSpeed);
         topSpeedLabel.setText(Double.toString(topSpeed));
-        TextView averagePercentageLabel = (TextView) view.findViewById(R.id.textViewPercentage);
-        averagePercentageLabel.setText(String.format("%.2f%%", averagePercentage));
         TextView averageVelocityLabel = (TextView) view.findViewById(R.id.textViewAverangeVelocity);
         averageVelocityLabel.setText(String.format("%.2fKM/h", averageVelocity));
     }

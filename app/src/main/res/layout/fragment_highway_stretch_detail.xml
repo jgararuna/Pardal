@@ -92,4 +92,28 @@
         android:layout_alignTop="@+id/textView5"
         android:layout_alignLeft="@+id/averageExceded"
         android:layout_alignStart="@+id/averageExceded" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Cidade/Estado"
+        android:id="@+id/textView8"
+        android:layout_below="@+id/textViewName"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/textViewCityState"
+        android:layout_below="@+id/textViewName"
+        android:layout_alignRight="@+id/totalTickets"
+        android:layout_alignEnd="@+id/totalTickets"
+        android:layout_alignBottom="@+id/textView8"
+        android:layout_toRightOf="@+id/textViewName"
+        android:layout_toEndOf="@+id/textViewName" />
+
 </RelativeLayout>
