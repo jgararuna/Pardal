@@ -27,9 +27,12 @@ public class HighwayStretchDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ID_HIGHWAY_STRETCH = "idHighwayStretch";
+    private static final String NAME = "nameHighwayStretch";
+
 
     // TODO: Rename and change types of parameters
     private int idHighwayStretch;
+    private String nameHighwayStretch;
 
     private OnFragmentInteractionListener mListener;
 
@@ -41,10 +44,11 @@ public class HighwayStretchDetailFragment extends Fragment {
      * @return A new instance of fragment HighwayStretchDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HighwayStretchDetailFragment newInstance(int idHighwayStretch) {
+    public static HighwayStretchDetailFragment newInstance(int idHighwayStretch, String nameHighwayStretch) {
         HighwayStretchDetailFragment fragment = new HighwayStretchDetailFragment();
         Bundle args = new Bundle();
         args.putInt(ID_HIGHWAY_STRETCH, idHighwayStretch);
+        args.putString(NAME, nameHighwayStretch);
         fragment.setArguments(args);
         return fragment;
     }
@@ -58,6 +62,7 @@ public class HighwayStretchDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             idHighwayStretch = getArguments().getInt(ID_HIGHWAY_STRETCH);
+            nameHighwayStretch = getArguments().getString(NAME);
         }
     }
 
@@ -85,6 +90,7 @@ public class HighwayStretchDetailFragment extends Fragment {
             double velocityExceded = 0;
             double maximumVelocity = tickets.get(0).getMaximumMeasuredVelocity();
 
+
             for (Tickets ticket : tickets){
                 amountTickets += ticket.getTotalTickets();
                 velocityExceded += tickets.get(actualTicket).getAverageExceded();
@@ -92,7 +98,12 @@ public class HighwayStretchDetailFragment extends Fragment {
             }
             totalTickets.setText(Integer.toString(amountTickets));
 
-            velocityExceded = velocityExceded/tickets.size();
+
+            if(tickets.size() != 0) {
+                velocityExceded = velocityExceded / tickets.size();
+            }else{
+                velocityExceded = 0;
+            }
 
             //Imprime velocidade limite dos carros na rodovia
             TextView velocityLimit = (TextView) rootView.findViewById(R.id.velocityLimit);
@@ -105,6 +116,9 @@ public class HighwayStretchDetailFragment extends Fragment {
             //Imprime a maxima velocidade registrada
             TextView maximumMeasuredVelocity = (TextView) rootView.findViewById(R.id.maximumMeasuredVelocity);
             maximumMeasuredVelocity.setText(Double.toString(maximumVelocity) + " km/h");
+
+            TextView name = (TextView) rootView.findViewById(R.id.textViewName);
+            name.setText("BR "+(nameHighwayStretch));
 
 
         } catch (ClassNotFoundException e) {
