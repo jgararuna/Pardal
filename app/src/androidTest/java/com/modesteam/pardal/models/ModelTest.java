@@ -10,6 +10,7 @@ import helpers.Condition;
 import helpers.Operator;
 import libraries.NotNullableException;
 import models.Model;
+import models.Type;
 
 
 /**
@@ -17,17 +18,23 @@ import models.Model;
  */
 public class ModelTest  extends TestCase {
         Model model1, model2;
+        Type type1;
         public void setUp() throws SQLException, NotNullableException, ClassNotFoundException {
             Pardal.getInstance().setDatabaseName("database_test.sqlite3.db");
-            model1 = new Model("model1",true,1,1);
+            type1 = new Type("tipo passagerio","PASSAGEIRO");
+            type1.save();
+            model1 = new Model("model1",true,1,type1.getId());
             model2 = new Model("model2",false,2,2);
             model1.save();
             model2.save();
 
+
         }
         public void tearDown() throws SQLException, ClassNotFoundException {
+            type1.delete();
             model1.delete();
             model2.delete();
+
         }
         public void testShouldGetFirstmodelFromDatabase() throws SQLException, ClassNotFoundException {
             assertEquals(model1.getName(), Model.first().getName());
@@ -71,5 +78,11 @@ public class ModelTest  extends TestCase {
             Condition condition = new Condition(new Model(),"name", Operator.EQUAL,"model1");
             assertEquals(model1.getName(), Model.getWhere(condition).get(0).getName());
         }
+        public void testShouldGetTypeFromModelFromDatabase() throws SQLException, ClassNotFoundException {
+           assertEquals(model1.getType().getName(), "PASSAGEIRO");
+        }
+
+
+
 
 }
