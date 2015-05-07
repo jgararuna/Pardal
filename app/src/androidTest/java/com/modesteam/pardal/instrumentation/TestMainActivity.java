@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ListView;
 
+import com.modesteam.pardal.BrandListFragment;
 import com.modesteam.pardal.MainActivity;
 import com.modesteam.pardal.R;
 
@@ -61,13 +62,14 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         openDrawerOptionAt(3);
     }
 
-    public void openListFragment(int position){
+    public Fragment openListFragment(int position){
         this.mActivity = getActivity();
         openDrawerOptionAt(2);
         Fragment fragment = this.mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
         mInstrumentation.waitForIdleSync();
         ListView listView = (ListView) ((FrameLayout) fragment.getView().findViewById(R.id.category_list_view)).getChildAt(0);
         TouchUtils.clickView(this,listView.getChildAt(position));
+        return  fragment;
     }
 
 
@@ -84,10 +86,10 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         openListFragment(2);
     }
 
-//  public void testShouldShowModelList(){
-//        this.mActivity = getActivity();
-//        openListFragment(3);
-//  }
+  public void testShouldShowModelList(){
+        this.mActivity = getActivity();
+        openListFragment(3);
+  }
 
     public void testShouldShowTypeList(){
         this.mActivity = getActivity();
@@ -96,9 +98,12 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
     public void testShouldShowBrandList(){
         this.mActivity = getActivity();
         openListFragment(5);
+        mInstrumentation.waitForIdleSync();
+        Fragment fragment = this.mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
+        assertEquals(fragment.getClass(), BrandListFragment.class);
     }
 
-    public void openDetailFragment(int position, int positionCategory, int view){
+    public Fragment openDetailFragment(int position, int positionCategory, int view){
         this.mActivity = getActivity();
         openDrawerOptionAt(2);
 
@@ -111,6 +116,8 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         mInstrumentation.waitForIdleSync();
         ListView listView2 = (ListView) ((FrameLayout) fragment2.getView().findViewById(view)).getChildAt(0);
         TouchUtils.clickView(this,listView2.getChildAt(position));
+
+        return fragment2;
     }
     public void testShouldShowStateDetail(){
         this.mActivity = getActivity();
@@ -124,10 +131,10 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         this.mActivity = getActivity();
         openDetailFragment(1,2,R.id.highway_list_view);
     }
-//    public void testShouldShowModelDetail(){
-//        this.mActivity = getActivity();
-//        openDetailFragment(1,3,R.id.model_list_view);
-//    }
+    public void testShouldShowModelDetail(){
+        this.mActivity = getActivity();
+        openDetailFragment(1,3,R.id.model_list_view);
+    }
     public void testShouldShowTypeDetail(){
         this.mActivity = getActivity();
         openDetailFragment(1,4,R.id.type_list_view);
