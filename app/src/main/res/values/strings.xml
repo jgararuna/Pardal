@@ -1,9 +1,8 @@
 <resources>
     <string name="app_name">Pardal</string>
 
-    <string name="title_section1">Visualizar Ranking</string>
+    <string name="title_section1">Inicio</string>
     <string name="title_section2">Visualizar Categoria</string>
-    <string name="title_section3">Créditos</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

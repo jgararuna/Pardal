@@ -53,18 +53,18 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         this.mActivity = getActivity();
         openDrawerOptionAt(1);
     }
-    public void testShouldSelectShowCategories(){
-        this.mActivity = getActivity();
-        openDrawerOptionAt(2);
-    }
-    public void testShouldSelectShowCredits(){
-        this.mActivity = getActivity();
-        openDrawerOptionAt(3);
-    }
+//    public void testShouldSelectShowCategories(){
+//        this.mActivity = getActivity();
+//        openDrawerOptionAt(2);
+//    }
+//    public void testShouldSelectShowCredits(){
+//        this.mActivity = getActivity();
+//        openDrawerOptionAt(3);
+//    }
 
     public Fragment openListFragment(int position){
         this.mActivity = getActivity();
-        openDrawerOptionAt(2);
+        openDrawerOptionAt(1);
         Fragment fragment = this.mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
         mInstrumentation.waitForIdleSync();
         ListView listView = (ListView) ((FrameLayout) fragment.getView().findViewById(R.id.category_list_view)).getChildAt(0);
@@ -105,7 +105,7 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
 
     public Fragment openDetailFragment(int position, int positionCategory, int view){
         this.mActivity = getActivity();
-        openDrawerOptionAt(2);
+        openDrawerOptionAt(1);
 
         Fragment fragment = this.mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
         mInstrumentation.waitForIdleSync();

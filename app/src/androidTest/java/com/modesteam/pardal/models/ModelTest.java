@@ -98,5 +98,10 @@ public class ModelTest  extends TestCase {
         model3.delete();
     }
 
+    public void testShouldGetModellFromDatabase() throws SQLException, ClassNotFoundException, NotNullableException {
+        assertEquals(model1.getName(), Model.get(Model.first().getId()).getName());
+
+    }
+
 
 }

@@ -58,11 +58,6 @@ public class MainActivity extends ActionBarActivity
                         .commit();
                 break;
 
-            case 2:
-                fragmentManager.beginTransaction()
-                        .replace(R.id.container, CreditsFragment.newInstance("", "")).addToBackStack("")
-                        .commit();
-                 break;
             default:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, PlaceholderFragment.newInstance(position + 1)).addToBackStack("")
@@ -77,12 +72,6 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 2:
                 mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-            case 4:
-                //mTitle = getString(R.string.title_section4);
                 break;
         }
     }
