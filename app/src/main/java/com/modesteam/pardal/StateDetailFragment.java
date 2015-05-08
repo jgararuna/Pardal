@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import exception.GenericAlertDialogException;
 import models.City;
 import models.HighwayStretch;
 import models.State;
@@ -97,10 +98,15 @@ public class StateDetailFragment extends Fragment {
 
             TextView textViewAverageExcede = (TextView) rootView.findViewById(R.id.textViewAverageExceded);
             textViewAverageExcede.setText(String.format("%.1f", averageExceded) + " km/h");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        } catch(ClassNotFoundException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
+        }catch(SQLException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
+        }catch (NullPointerException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
         }
 
         return rootView;
