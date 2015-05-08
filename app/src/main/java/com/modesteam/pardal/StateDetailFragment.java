@@ -28,6 +28,7 @@ import models.Tickets;
 public class StateDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static State stateDetail;
     private static final String IDState = "idState";
     private static final String Name = "name";
 
@@ -45,11 +46,12 @@ public class StateDetailFragment extends Fragment {
      * @return A new instance of fragment StateDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static StateDetailFragment newInstance(int param1, String param2) {
+    public static StateDetailFragment newInstance(State state) {
         StateDetailFragment fragment = new StateDetailFragment();
         Bundle args = new Bundle();
-        args.putInt(IDState, param1);
-        args.putString(Name, param2);
+        stateDetail = state;
+        args.putInt(IDState, state.getId());
+        args.putString(Name, state.getName());
         fragment.setArguments(args);
         return fragment;
     }
@@ -74,14 +76,13 @@ public class StateDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_state_detail, container, false);
 
         try {
-            State state = State.get(idState);
-            ArrayList<City> listCity = state.getCities();
+            ArrayList<City> listCity = stateDetail.getCities();
             ArrayList<HighwayStretch> listHighwayStretches = new ArrayList<>();
             ArrayList<Tickets> listTickets = new ArrayList<>();
             
-            double averageExceded = state.getAverageExceded();
-            double maximumMeasuredVelocity = state.getMaximumMeasuredVelocity();
-            int totalTickets = state.getTotalTickets();
+            double averageExceded = stateDetail.getAverageExceded();
+            double maximumMeasuredVelocity = stateDetail.getMaximumMeasuredVelocity();
+            int totalTickets = stateDetail.getTotalTickets();
             int totalCities = listCity.size();
 
             TextView textViewName = (TextView) rootView.findViewById(R.id.textViewName);
