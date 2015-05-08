@@ -11,7 +11,7 @@ public class GenericAlertDialogException {
     static AlertDialog alert;
 
     public void createAlert(Context context) {
-        
+
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage("Um erro inesperado ocorreu!");
 

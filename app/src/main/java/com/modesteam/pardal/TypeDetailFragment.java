@@ -20,11 +20,11 @@ import models.Type;
 public class TypeDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static Type typeForDetail;
-   // private static final String NAME_TYPE = "nameType";
+    private static Type typeForDetail = null;
+    private static final String ID_TYPE = "idType";
 
     // TODO: Rename and change types of parameters
-    //private static String nameOfType;
+   private static int idType;
 
     private OnFragmentInteractionListener mListener;
 
@@ -33,7 +33,7 @@ public class TypeDetailFragment extends Fragment {
         TypeDetailFragment fragment = new TypeDetailFragment();
         Bundle args = new Bundle();
         typeForDetail = type;
-       // args.putString(NAME_TYPE,nameType);
+        args.putInt(ID_TYPE,type.getId());
         fragment.setArguments(args);
         return fragment;
     }
@@ -46,7 +46,7 @@ public class TypeDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            //nameOfType = getArguments().getString(NAME_TYPE);
+            idType = getArguments().getInt(ID_TYPE);
         }
     }
 
@@ -79,7 +79,11 @@ public class TypeDetailFragment extends Fragment {
     public void detailType(View view) {
 
         ArrayList<Model> arrayModelsOfType = null;
+
         try {
+            if (typeForDetail==null){
+                typeForDetail = Type.get(getArguments().getInt(ID_TYPE));
+            }
             arrayModelsOfType = typeForDetail.getModels();
         }catch(ClassNotFoundException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
