@@ -90,7 +90,7 @@ public class HighwayStretchDetailFragment extends Fragment {
             */
 
             //Imprime total de tickets na rodovia
-            TextView totalTickets = (TextView) rootView.findViewById(R.id.totalTickets);
+
             ArrayList<Tickets> tickets = highwayStretchDetail.getTickets();
             cityHighwayStretch = highwayStretchDetail.getCity().getName();
             stateHighwayStretch = highwayStretchDetail.getCity().getState().getName();
@@ -109,10 +109,12 @@ public class HighwayStretchDetailFragment extends Fragment {
                     velocityExceded += ticket.getAverageExceded();
                 }
                 velocity = tickets.get(0).getVelocityLimit();
-                totalTickets.setText(Integer.toString(amountTickets));
                 velocityExceded = velocityExceded / tickets.size();
             }
 
+            //Imprime total ticktes
+            TextView totalTickets = (TextView) rootView.findViewById(R.id.totalTickets);
+            totalTickets.setText(Integer.toString(amountTickets));
 
 
             //Imprime velocidade limite dos carros na rodovia
