@@ -28,13 +28,11 @@ import models.Tickets;
 public class StateDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static State stateDetail;
-    private static final String IDState = "idState";
-    private static final String Name = "name";
+    private static State stateDetail = null;
+    private static final String ID_STATE = "idState";
 
     // TODO: Rename and change types of parameters
     private int idState;
-    private String name;
 
     private OnFragmentInteractionListener mListener;
 
@@ -42,7 +40,7 @@ public class StateDetailFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
+     * 
      * @return A new instance of fragment StateDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -50,8 +48,7 @@ public class StateDetailFragment extends Fragment {
         StateDetailFragment fragment = new StateDetailFragment();
         Bundle args = new Bundle();
         stateDetail = state;
-        args.putInt(IDState, state.getId());
-        args.putString(Name, state.getName());
+        args.putInt(ID_STATE, state.getId());
         fragment.setArguments(args);
         return fragment;
     }
@@ -64,8 +61,7 @@ public class StateDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            idState = getArguments().getInt(IDState);
-            name = getArguments().getString(Name);
+            idState = getArguments().getInt(ID_STATE);
         }
     }
 
@@ -79,6 +75,9 @@ public class StateDetailFragment extends Fragment {
             ArrayList<City> listCity = stateDetail.getCities();
             ArrayList<HighwayStretch> listHighwayStretches = new ArrayList<>();
             ArrayList<Tickets> listTickets = new ArrayList<>();
+            if (stateDetail==null){
+                stateDetail = State.get(getArguments().getInt(ID_STATE));
+            }
             
             double averageExceded = stateDetail.getAverageExceded();
             double maximumMeasuredVelocity = stateDetail.getMaximumMeasuredVelocity();
@@ -86,7 +85,7 @@ public class StateDetailFragment extends Fragment {
             int totalCities = listCity.size();
 
             TextView textViewName = (TextView) rootView.findViewById(R.id.textViewName);
-            textViewName.setText((name));
+            textViewName.setText((stateDetail.getName()));
 
             TextView textViewCities = (TextView) rootView.findViewById(R.id.textViewCities);
             textViewCities.setText(Integer.toString(totalCities));
