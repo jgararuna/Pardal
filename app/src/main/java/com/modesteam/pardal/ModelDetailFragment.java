@@ -28,11 +28,11 @@ import models.Tickets;
 public class ModelDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static Model modelDetail;
-    private static final String IDModel = "idModel";
-    private int idModel;
-    // TODO: Rename and change types of parameters
+    private static Model modelDetail = null;
+    private static final String ID_MODEL = "idModel";
 
+    // TODO: Rename and change types of parameters
+    private int idModel;
 
     private OnFragmentInteractionListener mListener;
 
@@ -41,7 +41,7 @@ public class ModelDetailFragment extends Fragment {
         ModelDetailFragment fragment = new ModelDetailFragment();
         Bundle args = new Bundle();
         modelDetail = model;
-        args.putInt(IDModel, model.getId());
+        args.putInt(ID_MODEL, model.getId());
         fragment.setArguments(args);
         return fragment;
     }
@@ -54,7 +54,7 @@ public class ModelDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            idModel = getArguments().getInt(IDModel);
+            idModel = getArguments().getInt(ID_MODEL);
         }
 
     }
@@ -97,6 +97,9 @@ public class ModelDetailFragment extends Fragment {
         double averageVelocity = 0.0;
         ArrayList<Tickets> tickets = null;
         try {
+            if (modelDetail==null){
+                modelDetail = Model.get(getArguments().getInt(ID_MODEL));
+            }
 
             tickets = modelDetail.getTickets();
             for(Tickets ticket: tickets){
