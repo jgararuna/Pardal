@@ -118,7 +118,7 @@ public class ModelListFragment extends Fragment implements AbsListView.OnItemCli
             // fragment is attached to one) that an item has been selected.
            // mListener.onFragmentInteraction(Integer.parseInt(ModelContent.ITEMS.get(position).id), ModelListFragment.newInstance("",""));
            Model modelSelected = ModelContent.ITEMS.get(position);
-            mListener.onFragmentInteraction(modelSelected.getId(), ModelDetailFragment.newInstance(modelSelected.getId()));
+            mListener.onFragmentInteraction(modelSelected.getId(), ModelDetailFragment.newInstance(modelSelected));
         }
     }
 

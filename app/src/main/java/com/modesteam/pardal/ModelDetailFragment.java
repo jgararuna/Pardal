@@ -28,6 +28,7 @@ import models.Tickets;
 public class ModelDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static Model modelDetail;
     private static final String IDModel = "idModel";
     private int idModel;
     // TODO: Rename and change types of parameters
@@ -36,10 +37,11 @@ public class ModelDetailFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     // TODO: Rename and change types and number of parameters
-    public static ModelDetailFragment newInstance(int param1) {
+    public static ModelDetailFragment newInstance(Model model) {
         ModelDetailFragment fragment = new ModelDetailFragment();
         Bundle args = new Bundle();
-        args.putInt(IDModel, param1);
+        modelDetail = model;
+        args.putInt(IDModel, model.getId());
         fragment.setArguments(args);
         return fragment;
     }
@@ -93,10 +95,10 @@ public class ModelDetailFragment extends Fragment {
         int numeberTotalTickets=0;
         double topSpeed =0.0;
         double averageVelocity = 0.0;
-        TextView nameModel = (TextView) view.findViewById(R.id.textViewName);
+        ArrayList<Tickets> tickets = null;
         try {
-            nameModel.setText(Model.get(idModel).getName());
-            ArrayList<Tickets> tickets = Model.get(idModel).getTickets();
+
+            tickets = modelDetail.getTickets();
             for(Tickets ticket: tickets){
                 numeberTotalTickets = numeberTotalTickets + ticket.getTotalTickets();
                 if(topSpeed < ticket.getMaximumMeasuredVelocity()){
@@ -115,8 +117,10 @@ public class ModelDetailFragment extends Fragment {
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
             genericAlertDialogException.criarAviso(this.getActivity());
         }
+        TextView nameModel = (TextView) view.findViewById(R.id.textViewName);
+        nameModel.setText(modelDetail.getName());
         TextView totalTicketsLabel = (TextView) view.findViewById(R.id.textViewTickets);
-        totalTicketsLabel.setText(Integer.toString(numeberTotalTickets));
+        totalTicketsLabel.setText( Integer.toString(numeberTotalTickets));
         TextView topSpeedLabel = (TextView) view.findViewById(R.id.textViewTopSpeed);
         topSpeedLabel.setText(Double.toString(topSpeed));
         TextView averageVelocityLabel = (TextView) view.findViewById(R.id.textViewAverangeVelocity);
