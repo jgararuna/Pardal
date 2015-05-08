@@ -29,8 +29,11 @@ public class CityDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static City cityForDetail;
+    private static final String ID_CITY = "idCity";
 
     private OnFragmentInteractionListener mListener;
+
+    private static int idCity;
 
     /**
      * Use this factory method to create a new instance of
@@ -44,6 +47,7 @@ public class CityDetailFragment extends Fragment {
         CityDetailFragment fragment = new CityDetailFragment();
         Bundle args = new Bundle();
         cityForDetail = city;
+        args.putInt(ID_CITY,city.getId());
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,6 +60,7 @@ public class CityDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            idCity = getArguments().getInt(ID_CITY);
 
         }
     }
@@ -91,6 +96,9 @@ public class CityDetailFragment extends Fragment {
         ArrayList<HighwayStretch> arrayHighwayStretchesOfCity = null;
         State stateOfCity = null;
         try {
+            if (cityForDetail==null){
+                cityForDetail = City.get(getArguments().getInt(ID_CITY));
+            }
             arrayHighwayStretchesOfCity = cityForDetail.getHighwayStretches();
             stateOfCity = cityForDetail.getState();
         }catch(ClassNotFoundException e){
