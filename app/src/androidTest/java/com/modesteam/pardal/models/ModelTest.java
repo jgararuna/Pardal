@@ -28,12 +28,17 @@ public class ModelTest  extends TestCase {
             model1.save();
             model2.save();
 
-
         }
         public void tearDown() throws SQLException, ClassNotFoundException {
-            type1.delete();
             model1.delete();
             model2.delete();
+            type1.delete();
+//            for (Type type: Type.getAll()){
+//                type.delete();
+//            }
+//            for (Model model: Model.getAll()){
+//                model.delete();
+//            }
 
         }
         public void testShouldGetFirstmodelFromDatabase() throws SQLException, ClassNotFoundException {
@@ -81,8 +86,5 @@ public class ModelTest  extends TestCase {
         public void testShouldGetTypeFromModelFromDatabase() throws SQLException, ClassNotFoundException {
            assertEquals(model1.getType().getName(), "PASSAGEIRO");
         }
-
-
-
 
 }
