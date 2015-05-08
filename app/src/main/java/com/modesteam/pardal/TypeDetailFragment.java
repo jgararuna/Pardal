@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import exception.GenericAlertDialogException;
 import helpers.Condition;
 import helpers.Operator;
 import models.Tickets;
@@ -85,9 +86,14 @@ public class TypeDetailFragment extends Fragment {
         try {
             arrayModelsOfType = typeForDetail.getModels();
         }catch(ClassNotFoundException e){
-            e.printStackTrace();
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
         }catch(SQLException e){
-            e.printStackTrace();
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
+        }catch (NullPointerException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
         }
 
         TextView nameType, totalModels,totalTickets,maxVelocity, averageExceded;
