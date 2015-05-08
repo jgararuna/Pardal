@@ -13,6 +13,7 @@ import android.widget.TextView;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import exception.GenericAlertDialogException;
 import models.Brand;
 import models.Model;
 import models.Tickets;
@@ -101,9 +102,16 @@ public class BrandDetailFragment extends Fragment {
             textViewMaximumMeasuredVelocity.setText((Double.toString(maximumMeasuredVelocity )+ " km/h"));
 
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
+           // e.printStackTrace();
         } catch (SQLException e) {
-            e.printStackTrace();
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
+            //e.printStackTrace();
+        } catch (NullPointerException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
         }
 
         return rootView;

@@ -1,5 +1,7 @@
 package com.modesteam.pardal.brand;
 
+import com.modesteam.pardal.Pardal;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
