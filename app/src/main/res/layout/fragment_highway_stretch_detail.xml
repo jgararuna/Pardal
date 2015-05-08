@@ -112,8 +112,9 @@
         android:layout_below="@+id/textViewName"
         android:layout_alignRight="@+id/totalTickets"
         android:layout_alignEnd="@+id/totalTickets"
-        android:layout_alignBottom="@+id/textView8"
-        android:layout_toRightOf="@+id/textViewName"
-        android:layout_toEndOf="@+id/textViewName" />
+        android:layout_toEndOf="@+id/textViewName"
+        android:layout_alignLeft="@+id/textViewName"
+        android:layout_alignStart="@+id/textViewName"
+        android:layout_above="@+id/totalTickets" />
 
 </RelativeLayout>

@@ -27,18 +27,12 @@ import models.Tickets;
 public class HighwayStretchDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static HighwayStretch highwayStretchDetail;
+    private static HighwayStretch highwayStretchDetail = null;
     private static final String ID_HIGHWAY_STRETCH = "idHighwayStretch";
-    private static final String NAME = "nameHighwayStretch";
-    private static final String KM = "kmHighwayStretch";
 
 
     // TODO: Rename and change types of parameters
     private int idHighwayStretch;
-    private String nameHighwayStretch;
-    private String cityHighwayStretch;
-    private String stateHighwayStretch;
-    private int kmHighwayStretch;
 
     private OnFragmentInteractionListener mListener;
 
@@ -46,7 +40,7 @@ public class HighwayStretchDetailFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param idHighwayStretch Parameter 1.
+     *
      * @return A new instance of fragment HighwayStretchDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -55,8 +49,6 @@ public class HighwayStretchDetailFragment extends Fragment {
         Bundle args = new Bundle();
         highwayStretchDetail = highwayStretch;
         args.putInt(ID_HIGHWAY_STRETCH, highwayStretch.getId());
-        args.putString(NAME, highwayStretch.getNumber());
-        args.putInt(KM, highwayStretch.getKilometer());
         fragment.setArguments(args);
         return fragment;
     }
@@ -70,8 +62,6 @@ public class HighwayStretchDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             idHighwayStretch = getArguments().getInt(ID_HIGHWAY_STRETCH);
-            nameHighwayStretch = getArguments().getString(NAME);
-            kmHighwayStretch = getArguments().getInt(KM);
         }
     }
 
@@ -82,18 +72,11 @@ public class HighwayStretchDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_highway_stretch_detail, container, false);
 
         try {
-            // Implemente
-
-            /*/Imprime total de rodovias
-            TextView total = (TextView) rootView.findViewById(R.id.total);
-            total.setText(Integer.toString(HighwayStretch.getAll().size()));
-            */
-
-            //Imprime total de tickets na rodovia
+            if (highwayStretchDetail==null){
+                highwayStretchDetail = HighwayStretch.get(getArguments().getInt(ID_HIGHWAY_STRETCH));
+            }
 
             ArrayList<Tickets> tickets = highwayStretchDetail.getTickets();
-            cityHighwayStretch = highwayStretchDetail.getCity().getName();
-            stateHighwayStretch = highwayStretchDetail.getCity().getState().getName();
 
             int amountTickets = 0;
             double velocity = 0.0;
@@ -130,10 +113,10 @@ public class HighwayStretchDetailFragment extends Fragment {
             maximumMeasuredVelocity.setText(Double.toString(maximumVelocity) + " km/h");
 
             TextView name = (TextView) rootView.findViewById(R.id.textViewName);
-            name.setText("BR "+(nameHighwayStretch)+" KM "+(kmHighwayStretch));
+            name.setText("BR "+(highwayStretchDetail.getNumber())+" KM "+(highwayStretchDetail.getKilometer()));
 
             TextView cityState = (TextView) rootView.findViewById(R.id.textViewCityState);
-            cityState.setText(""+(cityHighwayStretch)+"/"+(stateHighwayStretch));
+            cityState.setText(""+(highwayStretchDetail.getCity().getName())+"/"+(highwayStretchDetail.getCity().getState().getName()));
 
 
         }catch(ClassNotFoundException e){
