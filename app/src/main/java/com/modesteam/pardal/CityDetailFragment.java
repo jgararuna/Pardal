@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import exception.GenericAlertDialogException;
 import models.City;
 import models.HighwayStretch;
 import models.Model;
@@ -95,9 +96,14 @@ public class CityDetailFragment extends Fragment {
             arrayHighwayStretchesOfCity = cityForDetail.getHighwayStretches();
             stateOfCity = cityForDetail.getState();
         }catch(ClassNotFoundException e){
-            e.printStackTrace();
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
         }catch(SQLException e){
-            e.printStackTrace();
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
+        }catch (NullPointerException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
         }
 
         TextView nameCity, totalHighwayStretches,totalTickets,maxVelocity, averageExceded;
