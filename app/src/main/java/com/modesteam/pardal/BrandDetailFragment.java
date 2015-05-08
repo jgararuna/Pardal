@@ -10,6 +10,8 @@ import android.widget.AbsListView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import java.sql.SQLException;
+
 import exception.GenericAlertDialogException;
 import models.Brand;
 
@@ -24,13 +26,11 @@ import models.Brand;
 public class BrandDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static Brand brandDetail;
-    private static final String IDBrand = "idBrand";
-    private static final String Name = "Name";
+    private static Brand brandDetail = null;
+    private static final String ID_BRAND = "idBrand";
 
     // TODO: Rename and change types of parameters
     private int idBrand;
-    private String name;
 
 
     private OnFragmentInteractionListener mListener;
@@ -47,7 +47,7 @@ public class BrandDetailFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
+     *
      * @return A new instance of fragment BrandDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
@@ -55,8 +55,7 @@ public class BrandDetailFragment extends Fragment {
         BrandDetailFragment fragment = new BrandDetailFragment();
         Bundle args = new Bundle();
         brandDetail = brand;
-        args.putInt(IDBrand, brand.getId());
-        args.putString(Name, brand.getName());
+        args.putInt(ID_BRAND, brand.getId());
         fragment.setArguments(args);
         return fragment;
     }
@@ -69,8 +68,7 @@ public class BrandDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            idBrand = getArguments().getInt(IDBrand);
-            name = getArguments().getString(Name);
+            idBrand = getArguments().getInt(ID_BRAND);
         }
     }
 
@@ -81,6 +79,9 @@ public class BrandDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_brand_detail, container, false);
 
         try {
+            if (brandDetail==null){
+                brandDetail = Brand.get(getArguments().getInt(ID_BRAND));
+            }
 
             double averageExceded = brandDetail.getAverageExceded(), maximumMeasuredVelocity=brandDetail.getMaximumMeasuredVelocity();
             int  totalTickets=brandDetail.getTotalTickets();
@@ -89,7 +90,7 @@ public class BrandDetailFragment extends Fragment {
             textViewTotalTickets.setText(Integer.toString(totalTickets));
 
             TextView textViewName = (TextView) rootView.findViewById(R.id.textViewName);
-            textViewName.setText((name));
+            textViewName.setText((brandDetail.getName()));
 
             TextView textViewAverageExceded = (TextView) rootView.findViewById(R.id.textViewAverageExceded);
             textViewAverageExceded.setText((String.format("%.1f", averageExceded) + " km/h"));
@@ -98,6 +99,12 @@ public class BrandDetailFragment extends Fragment {
             textViewMaximumMeasuredVelocity.setText((Double.toString(maximumMeasuredVelocity )+ " km/h"));
 
         } catch (NullPointerException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.createAlert(this.getActivity());
+        }catch (ClassNotFoundException e) {
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.createAlert(this.getActivity());
+        } catch (SQLException e) {
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
             genericAlertDialogException.createAlert(this.getActivity());
         }

@@ -28,12 +28,12 @@ import models.State;
 public class CityDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static City cityForDetail;
+    private static City cityForDetail = null;
     private static final String ID_CITY = "idCity";
 
     private OnFragmentInteractionListener mListener;
 
-    private static int idCity;
+    private int idCity;
 
     /**
      * Use this factory method to create a new instance of
