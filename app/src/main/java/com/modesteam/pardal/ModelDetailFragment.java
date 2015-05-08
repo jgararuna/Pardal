@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import exception.GenericAlertDialogException;
 import models.Model;
 import models.Tickets;
 
@@ -104,10 +105,15 @@ public class ModelDetailFragment extends Fragment {
                 averageVelocity = averageVelocity + ticket.getAverageExceded();
             }
             averageVelocity = averageVelocity/tickets.size();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException s) {
-            s.printStackTrace();
+        }catch(ClassNotFoundException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
+        }catch(SQLException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
+        }catch (NullPointerException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
         }
         TextView totalTicketsLabel = (TextView) view.findViewById(R.id.textViewTickets);
         totalTicketsLabel.setText(Integer.toString(numeberTotalTickets));
