@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import exception.GenericAlertDialogException;
 import models.HighwayStretch;
 import models.Tickets;
 
@@ -134,10 +135,15 @@ public class HighwayStretchDetailFragment extends Fragment {
             cityState.setText(""+(cityHighwayStretch)+"/"+(stateHighwayStretch));
 
 
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
+        }catch(ClassNotFoundException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
+        }catch(SQLException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
+        }catch (NullPointerException e){
+            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
+            genericAlertDialogException.criarAviso(this.getActivity());
         }
 
         return rootView;
