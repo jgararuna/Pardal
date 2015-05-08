@@ -14,7 +14,7 @@ public class Database extends SQLiteAssetHelper{
     protected SQLiteDatabase database;
 
     public Database() {
-        super(Pardal.getInstance(), "database.sqlite3.db", null, DATABASE_VERSION);
+        super(Pardal.getInstance(), Pardal.getInstance().getDatabaseName(), null, DATABASE_VERSION);
     }
 
     public void openConnection(){

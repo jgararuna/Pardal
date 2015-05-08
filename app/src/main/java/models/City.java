@@ -24,6 +24,13 @@ public class City {
 	
 	private String code;
 	private String name;
+
+    @Column(name="total_tickets", nullable=true)
+    private int totalTickets;
+    @Column(name="average_exceded", nullable=true)
+    private Double averageExceded;
+    @Column(name="maximum_measured_velocity", nullable=true)
+    private Double maximumMeasuredVelocity;
 	
 	@Column(name="id_state", nullable=false)
 	private int idState;
@@ -74,6 +81,24 @@ public class City {
 	public void setIdState(int idState) {
 		this.idState = idState;
 	}
+    public int getTotalTickets() {
+        return totalTickets;
+    }
+    public void setTotalTickets(int totalTickets) {
+        this.totalTickets = totalTickets;
+    }
+    public Double getAverageExceded() {
+        return averageExceded;
+    }
+    public void setAverageExceded(Double averageExceded) {
+        this.averageExceded = averageExceded;
+    }
+    public Double getMaximumMeasuredVelocity() {
+        return maximumMeasuredVelocity;
+    }
+    public void setMaximumMeasuredVelocity(Double maximumMeasuredVelocity) {
+        this.maximumMeasuredVelocity = maximumMeasuredVelocity;
+    }
 	
 	public boolean save() throws ClassNotFoundException, SQLException, NotNullableException{
 		GenericPersistence gP = new GenericPersistence();
@@ -141,8 +166,7 @@ public class City {
 
 	@Override
 	public String toString() {
-		return "City [id=" + id + ", code=" + code + ", name=" + name
-				+ ", idState=" + idState + "]";
+		return  name;
 	}
 	
 }

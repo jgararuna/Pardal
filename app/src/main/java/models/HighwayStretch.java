@@ -9,12 +9,17 @@ import java.util.ArrayList;
 import libraries.NotNullableException;
 import annotations.Column;
 import annotations.Entity;
+import annotations.HasMany;
 import annotations.HasOne;
+import annotations.ManyRelations;
 import annotations.OneRelations;
 
-@Entity(table="high_stretch", primaryKey="id")
+@Entity(table="highway_stretch", primaryKey="id")
 @OneRelations({
 	@HasOne(entity=City.class, reference="idCity", belongs=true)
+})
+@ManyRelations({
+	@HasMany(entity=Tickets.class, foreignKey="idHighwayStretch")
 })
 public class HighwayStretch {
 
@@ -23,7 +28,7 @@ public class HighwayStretch {
 	
 	private String number;
 	
-	private Double kilometer;
+	private int kilometer;
 	
 	@Column(name="id_city", nullable = false)
 	private int idCity;
@@ -41,12 +46,13 @@ public class HighwayStretch {
 		this.id = id;
 	}
 	
-	public HighwayStretch(String number, Double kilometer) {
+	public HighwayStretch(String number, int kilometer, int idCity) {
 		super();
 		this.number = number;
 		this.kilometer = kilometer;
+		this.idCity = idCity;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -59,11 +65,11 @@ public class HighwayStretch {
 		this.number = number;
 	}
 
-	public Double getKilometer() {
+	public int getKilometer() {
 		return kilometer;
 	}
 
-	public void setKilometer(Double kilometer) {
+	public void setKilometer(int kilometer) {
 		this.kilometer = kilometer;
 	}
 
@@ -129,10 +135,19 @@ public class HighwayStretch {
 		GenericPersistence gP = new GenericPersistence();
 		return (City) gP.selectOne(this, new City());
 	}
+	
+	public ArrayList<Tickets> getTickets() throws ClassNotFoundException, SQLException{
+		GenericPersistence gP = new GenericPersistence();
+		ArrayList<Tickets> beans = new ArrayList<Tickets>();
+		for (Object bean : gP.selectMany(this, new Tickets())) {
+			beans.add((Tickets)bean);
+		}
+		return beans;
+	}
 
 	@Override
 	public String toString() {
-		return "HighwayStretch [id=" + id + ", number=" + number
-				+ ", kilometer=" + kilometer + ", idCity=" + idCity + "]";
+		return "BR " + number
+				+ ", kilometro " + kilometer;
 	}
 }

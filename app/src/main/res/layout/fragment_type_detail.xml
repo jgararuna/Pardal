@@ -1,0 +1,104 @@
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+        android:layout_height="match_parent" tools:context="com.modesteam.pardal.TypeDetailFragment">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Detalhes:"
+            android:id="@+id/textViewDetalhes"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="48dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewName"
+            android:textSize="18dp"
+            android:text="New Text"
+            android:layout_below="@+id/textViewDetalhes"
+            android:layout_centerHorizontal="true"
+            android:textColor="#ff2b2dff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Total Modelos:"
+            android:id="@+id/textView2"
+            android:layout_marginTop="40dp"
+            android:layout_below="@+id/textViewName"
+            android:layout_toLeftOf="@+id/textViewName"
+            android:layout_toStartOf="@+id/textViewName" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/textViewModels"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignRight="@+id/textView6"
+            android:layout_alignEnd="@+id/textView6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Total Multas:"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/textView2"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignStart="@+id/textView2"
+            android:layout_marginTop="35dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textViewTickets"
+            android:layout_alignBottom="@+id/textView4"
+            android:layout_alignLeft="@+id/textViewModels"
+            android:layout_alignStart="@+id/textViewModels" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Velocidade Maxima Registrada:"
+            android:id="@+id/textView5"
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/textViewDetalhes"
+            android:layout_alignEnd="@+id/textViewDetalhes" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Media Do Excesso De Velocidade"
+            android:id="@+id/textView6"
+            android:layout_below="@+id/textView5"
+            android:layout_alignLeft="@+id/textView5"
+            android:layout_alignStart="@+id/textView5"
+            android:layout_marginTop="35dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/textViewMaximumMeasuredVelocity"
+            android:layout_above="@+id/textView6"
+            android:layout_toRightOf="@+id/textView6"
+            android:layout_toEndOf="@+id/textView6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/textViewAverageExceded"
+            android:layout_alignTop="@+id/textView6"
+            android:layout_toRightOf="@+id/textViewTickets"
+            android:layout_toEndOf="@+id/textViewTickets" />
+
+    </RelativeLayout>
