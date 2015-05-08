@@ -138,13 +138,13 @@ public class HighwayStretchDetailFragment extends Fragment {
 
         }catch(ClassNotFoundException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }catch(SQLException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }catch (NullPointerException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }
 
         return rootView;

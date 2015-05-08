@@ -1,7 +1,6 @@
 package com.modesteam.pardal;
 
 import android.app.Activity;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import exception.GenericAlertDialogException;
 import models.City;
 import models.HighwayStretch;
-import models.Model;
 import models.State;
 
 
@@ -97,13 +95,13 @@ public class CityDetailFragment extends Fragment {
             stateOfCity = cityForDetail.getState();
         }catch(ClassNotFoundException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }catch(SQLException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }catch (NullPointerException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }
 
         TextView nameCity, totalHighwayStretches,totalTickets,maxVelocity, averageExceded;

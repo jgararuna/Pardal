@@ -10,13 +10,8 @@ import android.widget.AbsListView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-
 import exception.GenericAlertDialogException;
 import models.Brand;
-import models.Model;
-import models.Tickets;
 
 
 /**
@@ -104,7 +99,7 @@ public class BrandDetailFragment extends Fragment {
 
         } catch (NullPointerException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }
 
         return rootView;

@@ -1,7 +1,6 @@
 package com.modesteam.pardal;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,9 +13,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import exception.GenericAlertDialogException;
-import helpers.Condition;
-import helpers.Operator;
-import models.Tickets;
 import models.Model;
 import models.Type;
 
@@ -87,13 +83,13 @@ public class TypeDetailFragment extends Fragment {
             arrayModelsOfType = typeForDetail.getModels();
         }catch(ClassNotFoundException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }catch(SQLException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }catch (NullPointerException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }
 
         TextView nameType, totalModels,totalTickets,maxVelocity, averageExceded;

@@ -109,13 +109,13 @@ public class ModelDetailFragment extends Fragment {
             averageVelocity = averageVelocity/tickets.size();
         }catch(ClassNotFoundException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }catch(SQLException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }catch (NullPointerException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
+            genericAlertDialogException.createAlert(this.getActivity());
         }
         TextView nameModel = (TextView) view.findViewById(R.id.textViewName);
         nameModel.setText(modelDetail.getName());
