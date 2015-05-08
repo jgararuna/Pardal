@@ -29,6 +29,7 @@ import models.Tickets;
 public class BrandDetailFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static Brand brandDetail;
     private static final String IDBrand = "idBrand";
     private static final String Name = "Name";
 
@@ -55,11 +56,12 @@ public class BrandDetailFragment extends Fragment {
      * @return A new instance of fragment BrandDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BrandDetailFragment newInstance(int param1, String param2) {
+    public static BrandDetailFragment newInstance(Brand brand) {
         BrandDetailFragment fragment = new BrandDetailFragment();
         Bundle args = new Bundle();
-        args.putInt(IDBrand, param1);
-        args.putString(Name, param2);
+        brandDetail = brand;
+        args.putInt(IDBrand, brand.getId());
+        args.putString(Name, brand.getName());
         fragment.setArguments(args);
         return fragment;
     }
@@ -84,10 +86,9 @@ public class BrandDetailFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_brand_detail, container, false);
 
         try {
-            
-            Brand brand = Brand.get(idBrand);
-            double averageExceded = brand.getAverageExceded(), maximumMeasuredVelocity=brand.getMaximumMeasuredVelocity();
-            int  totalTickets=brand.getTotalTickets();
+
+            double averageExceded = brandDetail.getAverageExceded(), maximumMeasuredVelocity=brandDetail.getMaximumMeasuredVelocity();
+            int  totalTickets=brandDetail.getTotalTickets();
 
             TextView textViewTotalTickets = (TextView) rootView.findViewById(R.id.textViewTotalTickets);
             textViewTotalTickets.setText(Integer.toString(totalTickets));
@@ -101,14 +102,6 @@ public class BrandDetailFragment extends Fragment {
             TextView textViewMaximumMeasuredVelocity = (TextView) rootView.findViewById(R.id.textViewMaximumMeasuredVelocity);
             textViewMaximumMeasuredVelocity.setText((Double.toString(maximumMeasuredVelocity )+ " km/h"));
 
-        } catch (ClassNotFoundException e) {
-            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
-           // e.printStackTrace();
-        } catch (SQLException e) {
-            GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
-            genericAlertDialogException.criarAviso(this.getActivity());
-            //e.printStackTrace();
         } catch (NullPointerException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
             genericAlertDialogException.criarAviso(this.getActivity());

@@ -122,7 +122,7 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected
                 Brand brandSelected = BrandContent.ITEMS.get(position);
-                mListener.onFragmentInteraction(position, BrandDetailFragment.newInstance(position, brandSelected.getName()));
+                mListener.onFragmentInteraction(position, BrandDetailFragment.newInstance(brandSelected));
         }
     }
 
