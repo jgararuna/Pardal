@@ -52,13 +52,13 @@ public class MainActivity extends ActionBarActivity
                     .replace(R.id.container, WelcomeFragment.newInstance("", "")).addToBackStack("")
                     .commit();
                 break;
-            case 2:
+            case 1:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, CategoryListFragment.newInstance("", "")).addToBackStack("")
                         .commit();
                 break;
 
-            case 3:
+            case 2:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, CreditsFragment.newInstance("", "")).addToBackStack("")
                         .commit();
