@@ -113,5 +113,8 @@ public class TicketsTest extends TestCase{
         tickets3.delete();
     }
 
+    public void testToStringTicket() throws SQLException, ClassNotFoundException, NotNullableException {
+        assertEquals(tickets1.toString(), Tickets.first().toString());
+    }
 
 }

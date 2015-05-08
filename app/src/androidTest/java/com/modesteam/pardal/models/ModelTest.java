@@ -86,5 +86,17 @@ public class ModelTest  extends TestCase {
         public void testShouldGetTypeFromModelFromDatabase() throws SQLException, ClassNotFoundException {
            assertEquals(model1.getType().getName(), "PASSAGEIRO");
         }
+    public void testShouldSetIsNationalModel() throws SQLException, ClassNotFoundException, NotNullableException {
+        Model model3 = new Model();
+        model3.setIdType(5);
+        model3.setName("CARGA");
+        model3.setIdBrand(5);
+        model3.setNational(true);
+        model3.save();
+        Condition condition = new Condition(new Model(),"name", Operator.EQUAL,"CARGA");
+        assertEquals(model3.getName(), Model.getWhere(condition).get(0).getName());
+        model3.delete();
+    }
+
 
 }
