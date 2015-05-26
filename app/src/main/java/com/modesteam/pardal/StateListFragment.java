@@ -19,6 +19,7 @@ import android.text.Editable;
 import com.modesteam.pardal.state.StateContent;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import models.State;
 
@@ -84,7 +85,6 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
         // TODO: Change Adapter to display your content
             mAdapter = new ArrayAdapter<State>(getActivity(),
                     android.R.layout.simple_list_item_1, android.R.id.text1, StateContent.ITEMS);
-
     }
 
     @Override
@@ -140,8 +140,9 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
-                State stateSelected = StateContent.ITEMS.get(position);
-                mListener.onFragmentInteraction(position, StateDetailFragment.newInstance(stateSelected));
+
+            State stateSelectedAdapter = (State)mAdapter.getItem(position);
+            mListener.onFragmentInteraction(position, StateDetailFragment.newInstance(stateSelectedAdapter));
         }
     }
 
