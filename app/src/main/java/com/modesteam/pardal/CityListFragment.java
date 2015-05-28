@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 
 import com.modesteam.pardal.city.CityContent;
+
+import helpers.ListViewSearch;
 import models.City;
 
 /**
@@ -96,22 +98,7 @@ public class CityListFragment extends Fragment implements AbsListView.OnItemClic
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
 
-        searchText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mAdapter.getFilter().filter(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        searchText.addTextChangedListener(ListViewSearch.searchListView(mAdapter));
 
         return view;
     }
