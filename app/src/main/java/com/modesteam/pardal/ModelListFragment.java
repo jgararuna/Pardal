@@ -16,6 +16,8 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.modesteam.pardal.model.ModelContent;
+
+import helpers.ListViewSearch;
 import models.Model;
 
 /**
@@ -96,22 +98,7 @@ public class ModelListFragment extends Fragment implements AbsListView.OnItemCli
 
        EditText searchText = (EditText) view.findViewById(R.id.searchEditText);
 
-       searchText.addTextChangedListener(new TextWatcher() {
-           @Override
-           public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-           }
-
-           @Override
-           public void onTextChanged(CharSequence s, int start, int before, int count) {
-               mAdapter.getFilter().filter(s.toString());
-           }
-
-           @Override
-           public void afterTextChanged(Editable s) {
-
-           }
-       });
+       searchText.addTextChangedListener(ListViewSearch.searchListView(mAdapter));
 
         return view;
     }
