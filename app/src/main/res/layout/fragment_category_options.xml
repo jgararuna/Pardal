@@ -1,0 +1,56 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.modesteam.pardal.CategoryOptionsFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bBrand"
+        android:layout_gravity="left|top"
+        android:background="@drawable/marca"
+        android:focusableInTouchMode="true"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bModel"
+        android:layout_gravity="center_horizontal|top"
+        android:background="@drawable/modelo"
+        android:focusableInTouchMode="false" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bType"
+        android:layout_gravity="right|top"
+        android:background="@drawable/tipos"
+        android:focusableInTouchMode="false" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bCity"
+        android:layout_gravity="left|center_vertical"
+        android:background="@drawable/cidade"
+        android:focusableInTouchMode="false" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bState"
+        android:layout_gravity="center"
+        android:background="@drawable/estados"
+        android:focusableInTouchMode="false" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bHighway"
+        android:layout_gravity="right|center_vertical"
+        android:background="@drawable/estrada"
+        android:focusableInTouchMode="false" />
+
+</FrameLayout>
