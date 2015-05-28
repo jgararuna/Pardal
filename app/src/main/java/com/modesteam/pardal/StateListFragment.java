@@ -21,6 +21,7 @@ import com.modesteam.pardal.state.StateContent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import helpers.ListViewSearch;
 import models.State;
 
 /**
@@ -99,22 +100,7 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
 
-        searchText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mAdapter.getFilter().filter(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
+        searchText.addTextChangedListener(ListViewSearch.searchListView(mAdapter));
 
         return view;
     }
