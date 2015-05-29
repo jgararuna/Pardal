@@ -4,32 +4,48 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <TableLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageButton
             android:layout_width="101dp"
             android:layout_height="101dp"
-            android:id="@+id/bRank"
-            android:layout_gravity="left|top"
-            android:background="@drawable/rank"
-            android:layout_row="15"
-            android:layout_column="0" />
-
-        <ImageButton
-            android:layout_width="match_parent"
-            android:layout_height="101dp"
             android:id="@+id/bList"
-            android:layout_gravity="right|top"
+            android:layout_gravity="center"
             android:background="@drawable/listar"
             android:layout_row="11"
-            android:layout_column="1" />
-    </TableLayout>
+            android:layout_column="1"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="right|center_vertical"></RelativeLayout>
+        <ImageButton
+            android:layout_width="101dp"
+            android:layout_height="101dp"
+            android:id="@+id/bRank"
+            android:layout_gravity="right|top"
+            android:background="@drawable/rank"
+            android:layout_row="15"
+            android:layout_column="0"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ranking"
+            android:id="@+id/sRanking"
+            android:layout_below="@+id/bRank"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lista"
+            android:id="@+id/sList"
+            android:layout_below="@+id/bList"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
 
 </FrameLayout>
