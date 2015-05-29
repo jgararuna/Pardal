@@ -135,4 +135,13 @@
         android:id="@+id/bAbout"
         android:layout_gravity="center_horizontal|bottom" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Categorias"
+        android:id="@+id/sCategories"
+        android:layout_gravity="center_horizontal|top"
+        android:textStyle="bold"
+        android:textSize="24dip" />
+
 </FrameLayout>
