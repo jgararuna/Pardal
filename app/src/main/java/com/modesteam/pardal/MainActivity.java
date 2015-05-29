@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,6 +22,10 @@ public class MainActivity extends ActionBarActivity
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
+
+    private OnReverseListener reverseListener;
+
+    private Menu mMenu;
 
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
@@ -92,6 +97,7 @@ public class MainActivity extends ActionBarActivity
             // decide what to show in the action bar.
             getMenuInflater().inflate(R.menu.main, menu);
             restoreActionBar();
+            mMenu = menu;
             return true;
         }
         return super.onCreateOptionsMenu(menu);
@@ -106,6 +112,11 @@ public class MainActivity extends ActionBarActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+
+        if (id == R.id.action_reverse) {
+            reverseListener.onReverseClick();
             return true;
         }
 
@@ -161,6 +172,15 @@ public class MainActivity extends ActionBarActivity
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment).addToBackStack("")
                 .commit();
+        try {
+            reverseListener = (OnReverseListener) fragment;
+            Log.d("AQUI", "QAADS"+fragment.toString());
+        } catch (ClassCastException e) {
+            Log.d("AQUI", "asas");
+            reverseListener = null;
+            MenuItem item = mMenu.findItem(R.id.action_reverse);
+            item.setVisible(false);
+        }
     }
 
 }

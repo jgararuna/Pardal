@@ -7,17 +7,19 @@ import annotations.Column;
 import annotations.Entity;
 import annotations.HasMany;
 import annotations.ManyRelations;
+import annotations.OrderBy;
 import helpers.Condition;
 import helpers.GenericPersistence;
 import libraries.NotNullableException;
 
 @ManyRelations({@HasMany(entity = Model.class, foreignKey = "idBrand")})
 @Entity(table="brand",primaryKey = "id")
-
+@OrderBy(field = "name")
 public class Brand {
 
     @Column(name="_id", nullable = false)
     private int id;
+
     private String name;
 
     @Column(name="total_tickets", nullable=true)

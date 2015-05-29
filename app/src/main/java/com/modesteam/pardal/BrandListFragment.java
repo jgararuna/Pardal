@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.modesteam.pardal.brand.BrandContent;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import models.Brand;
 
@@ -28,7 +30,7 @@ import models.Brand;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class BrandListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class BrandListFragment extends Fragment implements AbsListView.OnItemClickListener, OnReverseListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -137,5 +139,14 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
         if (emptyView instanceof TextView) {
             ((TextView) emptyView).setText(emptyText);
         }
+    }
+
+    @Override
+    public void onReverseClick() {
+        ArrayList<Brand> list = (ArrayList<Brand>)BrandContent.ITEMS;
+        Collections.reverse(list);
+        mAdapter = new ArrayAdapter<Brand>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, list);
+        mListView.setAdapter(mAdapter);
     }
 }
