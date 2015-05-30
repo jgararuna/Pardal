@@ -2,8 +2,8 @@
     <string name="app_name">Pardal</string>
 
     <string name="title_section1">Visualizar Ranking</string>
-    <string name="title_section2">Visualizar Categoria</string>
-    <string name="title_section3">Créditos</string>
+    <string name="title_section2">Creditos</string>
+    <string name="title_section3">Visualizar Categoria</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -11,6 +11,8 @@
     <string name="action_version">Versão</string>
 
     <string name="action_settings">Opções</string>
+
+    <string name="action_reverse">Reverse</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

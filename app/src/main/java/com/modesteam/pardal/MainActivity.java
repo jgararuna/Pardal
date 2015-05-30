@@ -22,6 +22,10 @@ public class MainActivity extends ActionBarActivity
      */
     private NavigationDrawerFragment mNavigationDrawerFragment;
 
+    private OnReverseListener reverseListener;
+
+    private Menu mMenu;
+
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
@@ -103,6 +107,7 @@ public class MainActivity extends ActionBarActivity
             // decide what to show in the action bar.
             getMenuInflater().inflate(R.menu.main, menu);
             restoreActionBar();
+            mMenu = menu;
             return true;
         }
         return super.onCreateOptionsMenu(menu);
@@ -119,6 +124,10 @@ public class MainActivity extends ActionBarActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        if (id == R.id.action_reverse) {
+            reverseListener.onReverseClick();
+            return true;
+            }
 
         return super.onOptionsItemSelected(item);
     }
@@ -172,6 +181,14 @@ public class MainActivity extends ActionBarActivity
         fragmentManager.beginTransaction()
                 .replace(R.id.container, fragment).addToBackStack("")
                 .commit();
+
+        try {
+            reverseListener = (OnReverseListener) fragment;
+            } catch (ClassCastException e) {
+            reverseListener = null;
+            MenuItem item = mMenu.findItem(R.id.action_reverse);
+            item.setVisible(false);
+            }
     }
 
 }
