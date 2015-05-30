@@ -13,7 +13,13 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
+import com.modesteam.pardal.brand.BrandContent;
 import com.modesteam.pardal.city.CityContent;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+import models.Brand;
 import models.City;
 
 /**
@@ -25,7 +31,7 @@ import models.City;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class CityListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class CityListFragment extends Fragment implements AbsListView.OnItemClickListener, OnReverseListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -134,4 +140,12 @@ public class CityListFragment extends Fragment implements AbsListView.OnItemClic
         }
     }
 
+    @Override
+    public void onReverseClick() {
+        ArrayList<City> list = (ArrayList<City>) CityContent.ITEMS;
+        Collections.reverse(list);
+        mAdapter = new ArrayAdapter<City>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, list);
+        mListView.setAdapter(mAdapter);
+    }
 }
