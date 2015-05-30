@@ -196,4 +196,17 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         mInstrumentation.sendStringSync("bu");
         assertEquals("BUJARI",((City)listView.getAdapter().getItem(0)).getName());
     }
+
+    public void testShouldFilterStateList(){
+        this.mActivity = getActivity();
+        openListFragment(0);
+        Fragment fragment = mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
+        EditText editText = (EditText) fragment.getView().findViewById(R.id.searchEditText);
+        ListView listView = (ListView) fragment.getView().findViewById(android.R.id.list);
+
+        TouchUtils.clickView(this,editText);
+        mInstrumentation.sendStringSync("b");
+        mInstrumentation.waitForIdleSync();
+        assertEquals("BA",((State)listView.getAdapter().getItem(0)).getName());
+    }
 }
