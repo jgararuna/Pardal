@@ -2,11 +2,13 @@ package com.modesteam.pardal;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.sql.SQLException;
@@ -114,6 +116,32 @@ public class TypeDetailFragment extends Fragment {
         DecimalFormat f = new DecimalFormat("#.##");
         averageExceded.setText(""+f.format(typeForDetail.getAverageExceded()));
 
-    }
+        TextView typeDesc = (TextView) view.findViewById(R.id.textViewDesc);
+        if(typeForDetail.getName().equalsIgnoreCase("passageiro")) {
+            typeDesc.setText("Veículo que transportam passageiros em geral. Ex: ônibus, moto, carros comuns");
+        }
+        else if(typeForDetail.getName().equalsIgnoreCase("carga")){
+            typeDesc.setText("veículo destinado ao transporte de carga, podendo transportar dois passageiros, exclusive o condutor.");
+        }
+        else if(typeForDetail.getName().equalsIgnoreCase("colecao")) {
+            typeDesc.setText("Veículo que, mesmo tendo sido fabricado há mais de trinta anos, conserva suas características originais de fabricação e possui valor histórico próprio.");
+        }
+        else if(typeForDetail.getName().equalsIgnoreCase("misto")) {
+            typeDesc.setText("veículo automotor destinado ao transporte simultâneo de carga e passageiro");
+        }
+        else if(typeForDetail.getName().equalsIgnoreCase("tracao")) {
+            typeDesc.setText("veículo agrícola");
+        }
+        else if(typeForDetail.getName().equalsIgnoreCase("competicao")) {
+            typeDesc.setText("veículo de corrida");
+        }
+        else if(typeForDetail.getName().equalsIgnoreCase("especial")) {
+            typeDesc.setText("veículo de operações como caminhão de bombeiro");
+        }
+        else if(typeForDetail.getName().equalsIgnoreCase("outra")) {
+            typeDesc.setText(" ");
+
+        }
+        }
 
 }
