@@ -3,6 +3,7 @@ package models;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import annotations.OrderBy;
 import libraries.NotNullableException;
 import helpers.Condition;
 import helpers.GenericPersistence;
@@ -15,6 +16,7 @@ import annotations.ManyRelations;
 @ManyRelations({
 	@HasMany(entity=City.class, foreignKey="idState")
 })
+@OrderBy(field = "name")
 public class State {
 
 	@Column(name="_id", nullable=false)

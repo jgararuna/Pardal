@@ -1,5 +1,6 @@
 package models;
 
+import annotations.OrderBy;
 import helpers.Condition;
 import helpers.GenericPersistence;
 
@@ -17,6 +18,7 @@ import annotations.OneRelations;
 @Entity(table="city", primaryKey="id")
 @OneRelations({@HasOne(entity=State.class, reference="idState", belongs=true)})
 @ManyRelations({@HasMany(entity=HighwayStretch.class, foreignKey="idCity")})
+@OrderBy(field = "name")
 public class City {
 
 	@Column(name="_id", nullable=false)
