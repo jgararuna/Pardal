@@ -182,4 +182,18 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         mInstrumentation.waitForIdleSync();
         assertEquals("FORD/FIESTA FLEX",((Model)listView.getAdapter().getItem(0)).getName());
     }
+
+    public void testShouldFilterCityList(){
+        this.mActivity = getActivity();
+        openListFragment(1);
+        mInstrumentation.waitForIdleSync();
+        Fragment fragment = mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
+        EditText editText = (EditText) fragment.getView().findViewById(R.id.searchEditText);
+        ListView listView = (ListView) fragment.getView().findViewById(android.R.id.list);
+        mInstrumentation.waitForIdleSync();
+        TouchUtils.clickView(this,editText);
+        mInstrumentation.waitForIdleSync();
+        mInstrumentation.sendStringSync("bu");
+        assertEquals("BUJARI",((City)listView.getAdapter().getItem(0)).getName());
+    }
 }
