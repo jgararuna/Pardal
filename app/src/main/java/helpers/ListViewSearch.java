@@ -24,7 +24,6 @@ public class ListViewSearch {
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         };
 

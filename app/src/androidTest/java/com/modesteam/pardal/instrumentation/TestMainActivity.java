@@ -10,6 +10,7 @@ import android.test.TouchUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.modesteam.pardal.BrandListFragment;
@@ -61,14 +62,6 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         this.mActivity = getActivity();
         openDrawerOptionAt(1);
     }
-//    public void testShouldSelectShowCategories(){
-//        this.mActivity = getActivity();
-//        openDrawerOptionAt(2);
-//    }
-//    public void testShouldSelectShowCredits(){
-//        this.mActivity = getActivity();
-//        openDrawerOptionAt(3);
-//    }
 
     public Fragment openListFragment(int position){
         this.mActivity = getActivity();
@@ -122,7 +115,7 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
 
         Fragment fragment2 = this.mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
         mInstrumentation.waitForIdleSync();
-        ListView listView2 = (ListView) ((FrameLayout) fragment2.getView().findViewById(view)).getChildAt(0);
+        ListView listView2 = (ListView) ((LinearLayout) fragment2.getView().findViewById(view)).getChildAt(1);
         TouchUtils.clickView(this,listView2.getChildAt(position));
 
         return fragment2;
@@ -175,18 +168,18 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         mInstrumentation.sendStringSync("car");
         assertEquals("CARGA",((Type)listView.getAdapter().getItem(0)).getName());
     }
-//    public void testShouldFilterModelList(){
-//        this.mActivity = getActivity();
-//        openListFragment(3);
-//        mInstrumentation.waitForIdleSync();
-//        Fragment fragment = mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
-//        EditText editText = (EditText) fragment.getView().findViewById(R.id.searchEditText);
-//        ListView listView = (ListView) fragment.getView().findViewById(android.R.id.list);
-//        mInstrumentation.waitForIdleSync();
-//        TouchUtils.clickView(this,editText);
-//        mInstrumentation.waitForIdleSync();
-//        mInstrumentation.sendStringSync("ford/fi");
-//        mInstrumentation.waitForIdleSync();
-//        assertEquals("FORD/FIESTA FLEX",((Model)listView.getAdapter().getItem(0)).getName());
-//    }
+    public void testShouldFilterModelList(){
+        this.mActivity = getActivity();
+        openListFragment(3);
+        mInstrumentation.waitForIdleSync();
+        Fragment fragment = mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
+        EditText editText = (EditText) fragment.getView().findViewById(R.id.searchEditText);
+        ListView listView = (ListView) fragment.getView().findViewById(android.R.id.list);
+        mInstrumentation.waitForIdleSync();
+        TouchUtils.clickView(this,editText);
+        mInstrumentation.waitForIdleSync();
+        mInstrumentation.sendStringSync("ford/fi");
+        mInstrumentation.waitForIdleSync();
+        assertEquals("FORD/FIESTA FLEX",((Model)listView.getAdapter().getItem(0)).getName());
+    }
 }
