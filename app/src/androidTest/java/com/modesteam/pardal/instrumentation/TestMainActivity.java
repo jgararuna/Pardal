@@ -209,4 +209,20 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         mInstrumentation.waitForIdleSync();
         assertEquals("BA",((State)listView.getAdapter().getItem(0)).getName());
     }
+
+        public void testShouldFilterHighwayStretchList(){
+        this.mActivity = getActivity();
+        openListFragment(2);
+        mInstrumentation.waitForIdleSync();
+        Fragment fragment = mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
+        EditText editText = (EditText) fragment.getView().findViewById(R.id.searchEditText);
+        ListView listView = (ListView) fragment.getView().findViewById(android.R.id.list);
+        mInstrumentation.waitForIdleSync();
+        TouchUtils.clickView(this,editText);
+        mInstrumentation.waitForIdleSync();
+        mInstrumentation.sendStringSync("222");
+        mInstrumentation.waitForIdleSync();
+        assertEquals("222",((HighwayStretch)listView.getAdapter().getItem(0)).getNumber());
+        assertEquals("4",((HighwayStretch)listView.getAdapter().getItem(0)).getKilometer());
+    }
 }
