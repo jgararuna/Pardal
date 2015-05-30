@@ -86,4 +86,15 @@ public class HighwayStrechtTest extends TestCase {
         Condition condition = new Condition(new HighwayStretch(),"kilometer", Operator.EQUAL,10);
         assertEquals(highway1.getKilometer(), HighwayStretch.getWhere(condition).get(0).getKilometer());
     }
+
+    public void testShouldShowHighwaySorted() throws SQLException, ClassNotFoundException, NotNullableException {
+        HighwayStretch highway4 = new HighwayStretch ("4",14,testCity.getId());
+        highway4.save();
+        HighwayStretch highwayA = new HighwayStretch ("A",15,testCity.getId());
+        highwayA.save();
+        HighwayStretch highway2 = new HighwayStretch ("2",16,testCity.getId());
+        highway2.save();
+        assertEquals(highwayA.getId(), HighwayStretch.first().getId());
+        assertEquals(highway4.getId(), HighwayStretch.last().getId());
+    }
 }

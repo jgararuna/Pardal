@@ -10,6 +10,7 @@ import helpers.Condition;
 import helpers.Operator;
 import libraries.NotNullableException;
 import models.City;
+import models.Model;
 import models.State;
 
 /**
@@ -75,5 +76,16 @@ public class StateTest extends TestCase {
         city.save();
         assertEquals(city.getName(), State.first().getCities().get(0).getName());
         city.delete();
+    }
+
+    public void testShouldShowStateSorted() throws SQLException, ClassNotFoundException, NotNullableException {
+        State state4 = new State ("state4");
+        state4.save();
+        State stateA = new State ("stateA");
+        stateA.save();
+        State state2 = new State ("state2");
+        state2.save();
+        assertEquals(stateA.getName(), State.first().getName());
+        assertEquals(state4.getName(), State.last().getName());
     }
 }

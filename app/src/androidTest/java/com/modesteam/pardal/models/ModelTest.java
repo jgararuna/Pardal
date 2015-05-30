@@ -44,7 +44,7 @@ public class ModelTest  extends TestCase {
         public void testShouldGetFirstmodelFromDatabase() throws SQLException, ClassNotFoundException {
             assertEquals(model1.getName(), Model.first().getName());
             assertEquals(model1.getBrand(), Model.first().getBrand());
-            assertEquals(model1.getIdType(),Model.first().getIdType());
+            assertEquals(model1.getIdType(), Model.first().getIdType());
             assertEquals(model1.getId(), Model.first().getId());
         }
 
@@ -96,6 +96,17 @@ public class ModelTest  extends TestCase {
         Condition condition = new Condition(new Model(),"name", Operator.EQUAL,"CARGA");
         assertEquals(model3.getName(), Model.getWhere(condition).get(0).getName());
         model3.delete();
+    }
+
+    public void testShouldShowModelSorted() throws SQLException, ClassNotFoundException, NotNullableException {
+        Model model4 = new Model ("model4",false,4,4);
+        model4.save();
+        Model modelA = new Model ("modelA",false,5,5);
+        model4.save();
+        Model model2 = new Model ("model2",false,6,6);
+        model4.save();
+        assertEquals(modelA.getName(), Model.first().getName());
+        assertEquals(model4.getName(), Model.last().getName());
     }
 
 

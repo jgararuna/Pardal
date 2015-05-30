@@ -76,4 +76,15 @@ public class BrandTest extends TestCase {
         assertEquals(model.getName(), Brand.first().getModels().get(0).getName());
         model.delete();
     }
+
+    public void testShouldShowBrandSorted() throws SQLException, ClassNotFoundException, NotNullableException {
+        Brand brand4 = new Brand ("Brand4");
+        brand4.save();
+        Brand brandA = new Brand ("BrandA");
+        brandA.save();
+        Brand brand2 = new Brand ("Brand2");
+        brand2.save();
+        assertEquals(brandA.getName(), Brand.first().getName());
+        assertEquals(brand4.getName(), Brand.last().getName());
+    }
 }
