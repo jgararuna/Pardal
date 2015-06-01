@@ -11,12 +11,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
+import android.widget.EditText;
+import android.text.TextWatcher;
+import android.text.Editable;
 
 
 import com.modesteam.pardal.state.StateContent;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import helpers.ListViewSearch;
 import models.State;
 
 /**
@@ -50,7 +55,7 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private ListAdapter mAdapter;
+    private ArrayAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
     public static StateListFragment newInstance(String param1, String param2) {
@@ -81,7 +86,6 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
         // TODO: Change Adapter to display your content
             mAdapter = new ArrayAdapter<State>(getActivity(),
                     android.R.layout.simple_list_item_1, android.R.id.text1, StateContent.ITEMS);
-
     }
 
     @Override
@@ -92,9 +96,11 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);
         ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
-
+        EditText searchText = (EditText) view.findViewById(R.id.searchEditText);
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
+
+        searchText.addTextChangedListener(ListViewSearch.searchListView(mAdapter));
 
         return view;
     }
@@ -120,8 +126,9 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
-                State stateSelected = StateContent.ITEMS.get(position);
-                mListener.onFragmentInteraction(position, StateDetailFragment.newInstance(stateSelected));
+
+            State stateSelected = (State)mAdapter.getItem(position);
+            mListener.onFragmentInteraction(position, StateDetailFragment.newInstance(stateSelected));
         }
     }
 

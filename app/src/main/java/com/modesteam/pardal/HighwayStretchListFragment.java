@@ -3,12 +3,15 @@ package com.modesteam.pardal;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
@@ -16,6 +19,7 @@ import com.modesteam.pardal.highwayStretch.HighwayStretchContent;
 
 import java.sql.SQLException;
 
+import helpers.ListViewSearch;
 import models.HighwayStretch;
 
 /**
@@ -50,7 +54,7 @@ public class HighwayStretchListFragment extends Fragment implements AbsListView.
      * The Adapter which will be used to populate the ListView/GridView with
      * Views.
      */
-    private ListAdapter mAdapter;
+    private ArrayAdapter mAdapter;
 
     // TODO: Rename and change types of parameters
     public static HighwayStretchListFragment newInstance(String param1, String param2) {
@@ -92,8 +96,11 @@ public class HighwayStretchListFragment extends Fragment implements AbsListView.
         mListView = (AbsListView) view.findViewById(android.R.id.list);
         ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
 
+        EditText searchText = (EditText) view.findViewById(R.id.searchEditText);
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
+
+        searchText.addTextChangedListener(ListViewSearch.searchListView(mAdapter));
 
         return view;
     }
@@ -118,9 +125,8 @@ public class HighwayStretchListFragment extends Fragment implements AbsListView.
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
-            // Notify the active callbacks interface (the activity, if the
-            // fragment is attached to one) that an item has been selected.
-            HighwayStretch highwayStretchSelected = HighwayStretchContent.ITEMS.get(position);
+
+            HighwayStretch highwayStretchSelected = (HighwayStretch)mAdapter.getItem(position);
                 mListener.onFragmentInteraction(position, HighwayStretchDetailFragment.newInstance(highwayStretchSelected));
         }
     }
