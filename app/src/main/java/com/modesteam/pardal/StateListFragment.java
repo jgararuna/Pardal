@@ -12,16 +12,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.EditText;
-import android.text.TextWatcher;
-import android.text.Editable;
-
 
 import com.modesteam.pardal.state.StateContent;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
-
 import helpers.ListViewSearch;
+import java.util.Collections;
 import models.State;
 
 /**
@@ -33,7 +29,7 @@ import models.State;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class StateListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class StateListFragment extends Fragment implements AbsListView.OnItemClickListener, OnReverseListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -143,5 +139,14 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
         if (emptyView instanceof TextView) {
             ((TextView) emptyView).setText(emptyText);
         }
+    }
+
+    @Override
+    public void onReverseClick() {
+        ArrayList<State> list = (ArrayList<State>) StateContent.ITEMS;
+        Collections.reverse(list);
+        mAdapter = new ArrayAdapter<State>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, list);
+        mListView.setAdapter(mAdapter);
     }
 }

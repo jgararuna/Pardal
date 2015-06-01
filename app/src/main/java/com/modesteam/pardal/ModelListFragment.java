@@ -15,9 +15,12 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import com.modesteam.pardal.brand.BrandContent;
 import com.modesteam.pardal.model.ModelContent;
 
 import helpers.ListViewSearch;
+import java.util.ArrayList;
+import java.util.Collections;
 import models.Model;
 
 /**
@@ -29,7 +32,7 @@ import models.Model;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class ModelListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class ModelListFragment extends Fragment implements AbsListView.OnItemClickListener, OnReverseListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -140,6 +143,15 @@ public class ModelListFragment extends Fragment implements AbsListView.OnItemCli
         if (emptyView instanceof TextView) {
             ((TextView) emptyView).setText(emptyText);
         }
+    }
+
+    @Override
+    public void onReverseClick() {
+        ArrayList<Model> list = (ArrayList<Model>) ModelContent.ITEMS;
+        Collections.reverse(list);
+        mAdapter = new ArrayAdapter<Model>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, list);
+        mListView.setAdapter(mAdapter);
     }
 
     /**

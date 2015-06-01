@@ -21,6 +21,12 @@ public class ModelTest  extends TestCase {
         Type type1;
         public void setUp() throws SQLException, NotNullableException, ClassNotFoundException {
             Pardal.getInstance().setDatabaseName("database_test.sqlite3.db");
+            for (Type type: Type.getAll()){
+                type.delete();
+            }
+            for (Model model: Model.getAll()) {
+                model.delete();
+            }
             type1 = new Type("tipo passagerio","PASSAGEIRO");
             type1.save();
             model1 = new Model("model1",true,1,type1.getId());
@@ -33,18 +39,11 @@ public class ModelTest  extends TestCase {
             model1.delete();
             model2.delete();
             type1.delete();
-//            for (Type type: Type.getAll()){
-//                type.delete();
-//            }
-//            for (Model model: Model.getAll()){
-//                model.delete();
-//            }
-
         }
         public void testShouldGetFirstmodelFromDatabase() throws SQLException, ClassNotFoundException {
             assertEquals(model1.getName(), Model.first().getName());
             assertEquals(model1.getBrand(), Model.first().getBrand());
-            assertEquals(model1.getIdType(),Model.first().getIdType());
+            assertEquals(model1.getIdType(), Model.first().getIdType());
             assertEquals(model1.getId(), Model.first().getId());
         }
 
@@ -98,9 +97,19 @@ public class ModelTest  extends TestCase {
         model3.delete();
     }
 
-    public void testShouldGetModellFromDatabase() throws SQLException, ClassNotFoundException, NotNullableException {
+    public void testShouldGetModelFromDatabase() throws SQLException, ClassNotFoundException, NotNullableException {
         assertEquals(model1.getName(), Model.get(Model.first().getId()).getName());
+    }
 
+    public void testShouldShowModelSorted() throws SQLException, ClassNotFoundException, NotNullableException {
+        Model modelZ = new Model ("Z",false,6,6);
+        modelZ.save();
+        Model modelA = new Model ("A",false,5,5);
+        modelA.save();
+        assertEquals(modelZ.getName(), Model.first().getName());
+        assertEquals(modelA.getName(), Model.last().getName());
+        modelZ.delete();
+        modelA.delete();
     }
 
 

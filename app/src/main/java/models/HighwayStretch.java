@@ -1,5 +1,6 @@
 package models;
 
+import annotations.OrderBy;
 import helpers.Condition;
 import helpers.GenericPersistence;
 
@@ -21,6 +22,7 @@ import annotations.OneRelations;
 @ManyRelations({
 	@HasMany(entity=Tickets.class, foreignKey="idHighwayStretch")
 })
+@OrderBy(field = "number")
 public class HighwayStretch {
 
 	@Column(name="_id", nullable=false)

@@ -11,6 +11,7 @@ import helpers.Operator;
 import libraries.NotNullableException;
 import models.Brand;
 import models.Model;
+import models.State;
 import models.Type;
 
 /**
@@ -22,6 +23,9 @@ public class TypeTest extends TestCase {
     Type type1, type2;
     public void setUp() throws SQLException, NotNullableException, ClassNotFoundException {
         Pardal.getInstance().setDatabaseName("database_test.sqlite3.db");
+        for (Type type: Type.getAll()){
+            type.delete();
+        }
         type1 = new Type("Carro tipo passageiro","PASSAGEIRO");
         type2 = new Type("Carro tipo carga","CARGA");
         type1.save();
@@ -70,6 +74,17 @@ public class TypeTest extends TestCase {
     public void testShouldGetWhereTypeFromDatabase() throws SQLException, ClassNotFoundException, NotNullableException {
         Condition condition = new Condition(new Type(),"name", Operator.EQUAL,"PASSAGEIRO");
         assertEquals(type1.getName(), Type.getWhere(condition).get(0).getName());
+    }
+
+    public void testShouldShowTypeSorted() throws SQLException, ClassNotFoundException, NotNullableException {
+        Type type4 = new Type ("type4","4");
+        type4.save();
+        Type typeA = new Type ("typeA","A");
+        typeA.save();
+        Type type2 = new Type ("type2","2");
+        type2.save();
+        assertEquals(typeA.getName(), Type.first().getName());
+        assertEquals(type4.getName(), Type.last().getName());
     }
 //Metodos Diferentes por classe
 

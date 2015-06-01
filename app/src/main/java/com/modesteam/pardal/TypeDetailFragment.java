@@ -114,6 +114,8 @@ public class TypeDetailFragment extends Fragment {
         DecimalFormat f = new DecimalFormat("#.##");
         averageExceded.setText(""+f.format(typeForDetail.getAverageExceded()));
 
-    }
+        TextView typeDesc = (TextView) view.findViewById(R.id.textViewDesc);
+        typeDesc.setText(typeForDetail.getDescription());
+        }
 
 }

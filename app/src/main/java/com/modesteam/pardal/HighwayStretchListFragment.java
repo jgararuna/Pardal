@@ -17,7 +17,8 @@ import android.widget.TextView;
 
 import com.modesteam.pardal.highwayStretch.HighwayStretchContent;
 
-import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import helpers.ListViewSearch;
 import models.HighwayStretch;
@@ -31,7 +32,7 @@ import models.HighwayStretch;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class HighwayStretchListFragment extends Fragment implements AbsListView.OnItemClickListener {
+public class HighwayStretchListFragment extends Fragment implements AbsListView.OnItemClickListener, OnReverseListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -144,4 +145,12 @@ public class HighwayStretchListFragment extends Fragment implements AbsListView.
         }
     }
 
+    @Override
+    public void onReverseClick() {
+        ArrayList<HighwayStretch> list = (ArrayList<HighwayStretch>) HighwayStretchContent.ITEMS;
+        Collections.reverse(list);
+        mAdapter = new ArrayAdapter<HighwayStretch>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, list);
+        mListView.setAdapter(mAdapter);
+    }
 }
