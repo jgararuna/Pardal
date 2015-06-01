@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity
                 break;
             case 1:
                 fragmentManager.beginTransaction()
-                        .replace(R.id.container, CategoryListFragment.newInstance("", "")).addToBackStack("")
+                        .replace(R.id.container, CategoryOptionsFragment.newInstance("", "")).addToBackStack("")
                         .commit();
                 break;
 
