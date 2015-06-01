@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
@@ -51,6 +55,7 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
      * The fragment's ListView/GridView.
      */
     private AbsListView mListView;
+    private EditText mSearchText;
 
     /**
      * The Adapter which will be used to populate the ListView/GridView with
@@ -87,7 +92,7 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
         // TODO: Change Adapter to display your content
         mAdapter = new ArrayAdapter<Brand>(getActivity(),
                   android.R.layout.simple_list_item_1, android.R.id.text1, BrandContent.ITEMS);
-
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -99,14 +104,14 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
         mListView = (AbsListView) view.findViewById(android.R.id.list);
         ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
 
-        EditText searchText = (EditText) view.findViewById(R.id.searchEditText);
+        mSearchText = (EditText) view.findViewById(R.id.searchEditText);
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
 
-        searchText.addTextChangedListener(ListViewSearch.searchListView(mAdapter));
+        mSearchText.addTextChangedListener(ListViewSearch.searchListView(mAdapter));
 
         return view;
-    }
+     }
 
     @Override
     public void onAttach(Activity activity) {
@@ -154,5 +159,25 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
         mAdapter = new ArrayAdapter<Brand>(getActivity(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, list);
         mListView.setAdapter(mAdapter);
+        // Set OnItemClickListener so we can be notified on item clicks
+        mListView.setOnItemClickListener(this);
+        mSearchText.addTextChangedListener(ListViewSearch.searchListView(mAdapter));
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.reverse, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if(id == R.id.action_reverse){
+            onReverseClick();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
