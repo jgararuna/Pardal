@@ -1,5 +1,7 @@
 package models;
 
+import com.modesteam.pardal.ComparableCategory;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -16,7 +18,7 @@ import libraries.NotNullableException;
 @Entity(table="brand",primaryKey = "id")
 @OrderBy(field = "name")
 
-public class Brand {
+public class Brand implements ComparableCategory{
 
     @Column(name="_id", nullable = false)
     private int id;
