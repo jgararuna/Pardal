@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.sql.SQLException;
@@ -128,6 +129,13 @@ public class ModelDetailFragment extends Fragment {
         topSpeedLabel.setText(Double.toString(topSpeed));
         TextView averageVelocityLabel = (TextView) view.findViewById(R.id.textViewAverangeVelocity);
         averageVelocityLabel.setText(String.format("%.2fKM/h", averageVelocity));
+
+        Button compareButton = (Button) view.findViewById(R.id.compareButton);
+        compareButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //    mListener.onFragmentInteraction(CategoryContent.ITEM_MAP.get(1).id, BrandListFragment.newInstance("1", ""));
+            }
+        });
     }
 
     /**

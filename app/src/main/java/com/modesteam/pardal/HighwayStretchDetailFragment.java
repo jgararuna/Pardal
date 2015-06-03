@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.sql.SQLException;
@@ -106,7 +107,7 @@ public class HighwayStretchDetailFragment extends Fragment {
 
             //Imprime a media de velocidade excedida
             TextView averageExceded = (TextView) rootView.findViewById(R.id.averageExceded);
-            averageExceded.setText(String.format("%.1f",velocityExceded) + " km/h");
+            averageExceded.setText(String.format("%.1f", velocityExceded) + " km/h");
 
             //Imprime a maxima velocidade registrada
             TextView maximumMeasuredVelocity = (TextView) rootView.findViewById(R.id.maximumMeasuredVelocity);
