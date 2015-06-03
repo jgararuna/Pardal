@@ -1,13 +1,15 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.modesteam.pardal.AboutFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_height="fill_parent"
+        android:id="@+id/lay">
 
         <ImageView
             android:layout_width="wrap_content"
@@ -43,6 +45,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/imageView3"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/modesteam"
+            android:layout_marginTop="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sobre Modesteam:"
+            android:id="@+id/textView13"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     O time Modesteam é um grupo formado por estudantes de Engenharia de Software da UnB campus Gama, responsável pelo desenvolvimento do aplicativo Pardal por meio das matérias Métodos de Desenvolvimento de Software e Gestão de Produção e Portifólio. Conhecido por ser o time mais modesto que já existiu."
+            android:id="@+id/textView14"
             android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestores:"
+            android:id="@+id/textView15"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView16"
+            android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
-</FrameLayout>
+
+</ScrollView>
