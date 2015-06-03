@@ -109,38 +109,50 @@ public class TestMainActivity extends ActivityInstrumentationTestCase2<MainActiv
         openListFragment(R.id.bList);
     }
 
-    public Fragment openDetailFragment(int position, int positionCategory, int view){
+    public Fragment openDetailFragment(int view){
         this.mActivity = getActivity();
         Fragment fragment3 = this.mActivity.getSupportFragmentManager().findFragmentById(R.id.container);
         mInstrumentation.waitForIdleSync();
         ListView listView2 = (ListView) ((LinearLayout) fragment3.getView().findViewById(view)).getChildAt(1);
-        TouchUtils.clickView(this,listView2.getChildAt(position));
+        TouchUtils.clickView(this,listView2.getChildAt(1));
         return fragment3;
     }
 
     public void testShouldShowStateDetail(){
         this.mActivity = getActivity();
-        openDetailFragment(R.id.bState,R.id.bList,1);
+        openListFragment(R.id.bState);
+        openListFragment(R.id.bList);
+        openDetailFragment(R.id.state_list_view);
     }
     public void testShouldShowCityDetail(){
         this.mActivity = getActivity();
-        openDetailFragment(R.id.bCity,R.id.bList,1);
+        openListFragment(R.id.bCity);
+        openListFragment(R.id.bList);
+        openDetailFragment(R.id.city_list_view);
     }
     public void testShouldShowHighWayStretchDetail(){
         this.mActivity = getActivity();
-        openDetailFragment(R.id.bHighway,R.id.bList,1);
+        openListFragment(R.id.bHighway);
+        openListFragment(R.id.bList);
+        openDetailFragment(R.id.highway_list_view);
     }
     public void testShouldShowModelDetail(){
         this.mActivity = getActivity();
-        openDetailFragment(R.id.bModel,R.id.bList,1);
+        openListFragment(R.id.bModel);
+        openListFragment(R.id.bList);
+        openDetailFragment(R.id.model_list_view);
     }
     public void testShouldShowTypeDetail(){
         this.mActivity = getActivity();
-        openDetailFragment(R.id.bType,R.id.bList,1);
+        openListFragment(R.id.bType);
+        openListFragment(R.id.bList);
+        openDetailFragment(R.id.type_list_view);
     }
     public void testShouldShowBrandDetail(){
         this.mActivity = getActivity();
-        openDetailFragment(R.id.bBrand,R.id.bList,1);
+        openListFragment(R.id.bBrand);
+        openListFragment(R.id.bList);
+        openDetailFragment(R.id. brand_list_view);
     }
 
 //    public void testShouldFilterBrandList(){
