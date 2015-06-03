@@ -70,15 +70,32 @@
             android:layout_height="wrap_content"
             android:text="Gestores:"
             android:id="@+id/textView15"
-            android:layout_gravity="center_vertical"
             android:layout_marginTop="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView16"
+            android:layout_gravity="center_horizontal"
+            android:text="Augusto Modesto\n Tainara Reis\n Cristóvão Frinhani\n Jonathan Moraes\n André Guedes\n " />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Desenvolvedores:"
+            android:id="@+id/textView17"
+            android:layout_marginTop="20dp"
+            android:textStyle="bold"
             android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView18"
+            android:layout_gravity="center_horizontal"
+            android:text=" Rafael Akiyoshi\n Ricardo Canela\n Luís Henrique\n Lucas Rufino\n Laércio Junior\n Luís Filipe\n " />
 
     </LinearLayout>
 
