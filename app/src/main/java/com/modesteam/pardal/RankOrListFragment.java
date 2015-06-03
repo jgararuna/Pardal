@@ -7,8 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.modesteam.pardal.category.CategoryContent;
+
+import models.State;
 
 
     /**
@@ -71,6 +74,15 @@ public class RankOrListFragment extends Fragment implements View.OnClickListener
         ImageButton bList = (ImageButton) view.findViewById(R.id.bList);
         bRank.setOnClickListener(this);
         bList.setOnClickListener(this);
+
+        View rootView = inflater.inflate(R.layout.fragment_rank_or_list, container, false);
+
+        TextView textViewAverageExceded = (TextView) rootView.findViewById(R.id.textViewDesc);
+        switch (mParam1) {
+            case "1":
+                textViewAverageExceded.setText(State.last());
+        }
+
         return view;
     }
 
