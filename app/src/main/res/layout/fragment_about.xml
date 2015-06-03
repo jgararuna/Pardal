@@ -29,6 +29,20 @@
             android:text="Sobre o Aplicativo:"
             android:id="@+id/textView11"
             android:layout_gravity="center_vertical"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="     O aplicativo Pardal tem como objetivo tornar os dados relativos à multas e infrações cometidas em todas as rodovias federais do país nos anos de 2011 a 2013 mais acessíveis e legíveis a população"
+            android:id="@+id/textView12"
+            android:layout_gravity="center_horizontal" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </FrameLayout>
