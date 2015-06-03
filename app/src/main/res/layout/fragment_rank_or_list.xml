@@ -73,7 +73,7 @@
             android:id="@+id/textViewDesc"
             android:layout_below="@+id/textView9"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="23dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -81,10 +81,9 @@
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="Small Text"
             android:id="@+id/textViewTotal"
-            android:layout_marginTop="84dp"
-            android:layout_below="@+id/sRanking"
-            android:layout_toLeftOf="@+id/bList"
-            android:layout_toStartOf="@+id/bList" />
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
