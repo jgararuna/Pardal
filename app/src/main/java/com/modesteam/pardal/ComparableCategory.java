@@ -7,4 +7,5 @@ public interface ComparableCategory {
     public int getTotalTickets();
     public Double getAverageExceded();
     public Double getMaximumMeasuredVelocity();
+    public String getName();
 }
