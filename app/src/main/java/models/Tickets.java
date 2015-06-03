@@ -21,7 +21,7 @@ import annotations.OneRelations;
 	@HasOne(entity=Model.class, reference="idModel", belongs=true)
 })
 @OrderBy(field = "name")
-public class Tickets implements ComparableCategory{
+public class Tickets{
 	
 	@Column(name="_id", nullable=false)
 	private int id;
