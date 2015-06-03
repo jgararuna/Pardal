@@ -26,20 +26,23 @@
             android:layout_gravity="center_horizontal" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="133dp"
             android:layout_height="wrap_content"
             android:text="Sobre o Aplicativo:"
             android:id="@+id/textView11"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="349dp"
             android:layout_height="wrap_content"
             android:text="     O aplicativo Pardal tem como objetivo tornar os dados relativos à multas e infrações cometidas em todas as rodovias federais do país nos anos de 2011 a 2013 mais acessíveis e legíveis a população"
             android:id="@+id/textView12"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -56,14 +59,17 @@
             android:id="@+id/textView13"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="20dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginLeft="20dp" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:text="     O time Modesteam é um grupo formado por estudantes de Engenharia de Software da UnB campus Gama, responsável pelo desenvolvimento do aplicativo Pardal por meio das matérias Métodos de Desenvolvimento de Software e Gestão de Produção e Portifólio. Conhecido por ser o time mais modesto que já existiu."
             android:id="@+id/textView14"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
