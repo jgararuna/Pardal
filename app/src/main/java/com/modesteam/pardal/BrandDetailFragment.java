@@ -88,7 +88,7 @@ public class BrandDetailFragment extends Fragment {
             }
 
             double averageExceded = brandDetail.getAverageExceded(), maximumMeasuredVelocity=brandDetail.getMaximumMeasuredVelocity();
-            int  totalTickets=brandDetail.getTotalTickets();
+            int  totalTickets = brandDetail.getTotalTickets();
 
             TextView textViewTotalTickets = (TextView) rootView.findViewById(R.id.textViewTotalTickets);
             textViewTotalTickets.setText(Integer.toString(totalTickets));
