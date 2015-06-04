@@ -155,9 +155,17 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
+            if(state == null){
+                State stateSelected = (State)mAdapter.getItem(position);
+                mListener.onFragmentInteraction(position, StateDetailFragment.newInstance(stateSelected));
+            }else{
+                State stateSelected = (State)mAdapter.getItem(position);
+                mListener.onFragmentInteraction(position, CompareFragment.newInstance(state,stateSelected,"Estado"));
+            }
+        }
+        if (null != mListener) {
 
-            State stateSelected = (State)mAdapter.getItem(position);
-            mListener.onFragmentInteraction(position, StateDetailFragment.newInstance(stateSelected));
+
         }
     }
 
