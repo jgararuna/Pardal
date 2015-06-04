@@ -165,14 +165,13 @@ public class BrandListFragment extends Fragment implements AbsListView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
-                if(brand == null){
-                    Brand brandSelected = (Brand)mAdapter.getItem(position);
-                    mListener.onFragmentInteraction(position, BrandDetailFragment.newInstance(brandSelected));
-                }else{
-                    Brand brandSelected = (Brand)mAdapter.getItem(position);
-                    mListener.onFragmentInteraction(position, CompareFragment.newInstance(brand,brandSelected,"Marca"));
-                }
-
+            if(brand == null){
+                Brand brandSelected = (Brand)mAdapter.getItem(position);
+                mListener.onFragmentInteraction(position, BrandDetailFragment.newInstance(brandSelected));
+            }else{
+                Brand brandSelected = (Brand)mAdapter.getItem(position);
+                mListener.onFragmentInteraction(position, CompareFragment.newInstance(brand,brandSelected,"Marca"));
+            }
         }
     }
 

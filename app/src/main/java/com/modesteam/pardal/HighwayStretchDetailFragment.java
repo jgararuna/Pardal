@@ -119,6 +119,13 @@ public class HighwayStretchDetailFragment extends Fragment {
             TextView cityState = (TextView) rootView.findViewById(R.id.textViewCityState);
             cityState.setText(""+(highwayStretchDetail.getCity().getName())+"/"+(highwayStretchDetail.getCity().getState().getName()));
 
+            Button compareButton = (Button) rootView.findViewById(R.id.compareButton);
+            compareButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    mListener.onFragmentInteraction(highwayStretchDetail.getId(),HighwayStretchListFragment.newInstance(highwayStretchDetail));
+                }
+            });
+
 
         }catch(ClassNotFoundException e){
             GenericAlertDialogException genericAlertDialogException = new GenericAlertDialogException();
