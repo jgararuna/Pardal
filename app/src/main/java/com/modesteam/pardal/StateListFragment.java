@@ -15,9 +15,12 @@ import android.widget.EditText;
 
 import com.modesteam.pardal.state.StateContent;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import helpers.ListViewSearch;
 import java.util.Collections;
+import java.util.List;
+
 import models.State;
 
 /**
@@ -35,10 +38,13 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_STATE = "state";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private State state;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -67,7 +73,13 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public StateListFragment() {
+    public static StateListFragment newInstance(State state) {
+        StateListFragment fragment = new StateListFragment();
+        Bundle args = new Bundle();
+        args.putInt(ARG_STATE, state.getId());
+
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -75,13 +87,34 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
         super.onCreate(savedInstanceState);
 
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            if(getArguments().getInt(ARG_STATE) == 0){
+                mParam1 = getArguments().getString(ARG_PARAM1);
+                mParam2 = getArguments().getString(ARG_PARAM2);
+            }else{
+                try {
+                    state = State.get(getArguments().getInt(ARG_STATE));
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         // TODO: Change Adapter to display your content
-            mAdapter = new ArrayAdapter<State>(getActivity(),
-                    android.R.layout.simple_list_item_1, android.R.id.text1, StateContent.ITEMS);
+        List<State> listState = new ArrayList<State>();
+        if(state != null) {
+            for (State brandItem : StateContent.ITEMS) {
+                if (brandItem.getId() != state.getId()) {
+                    listState.add(brandItem);
+                }
+            }
+        }else{
+            listState = StateContent.ITEMS;
+        }
+
+        mAdapter = new ArrayAdapter<State>(getActivity(),android.R.layout.simple_list_item_1, android.R.id.text1, listState);
+        setHasOptionsMenu(true);
     }
 
     @Override
