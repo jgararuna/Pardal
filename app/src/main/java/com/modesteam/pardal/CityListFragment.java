@@ -73,8 +73,8 @@ public class CityListFragment extends Fragment implements AbsListView.OnItemClic
         return fragment;
     }
 
-    public static BrandListFragment newInstance(City city) {
-        BrandListFragment fragment = new BrandListFragment();
+    public static CityListFragment newInstance(City city) {
+        CityListFragment fragment = new CityListFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_CITY, city.getId());
 
@@ -111,9 +111,9 @@ public class CityListFragment extends Fragment implements AbsListView.OnItemClic
         // TODO: Change Adapter to display your content
         List<City> listCity = new ArrayList<City>();
         if(city != null) {
-            for (City brandItem : CityContent.ITEMS) {
-                if (brandItem.getId() != city.getId()) {
-                    listCity.add(brandItem);
+            for (City cityItem : CityContent.ITEMS) {
+                if (cityItem.getId() != city.getId()) {
+                    listCity.add(cityItem);
                 }
             }
         }else{

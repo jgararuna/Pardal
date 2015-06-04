@@ -103,9 +103,9 @@ public class ModelListFragment extends Fragment implements AbsListView.OnItemCli
         /* TODO: Change Adapter to display your content */
         List<Model> listModel = new ArrayList<Model>();
         if(model != null) {
-            for (Model brandItem : ModelContent.ITEMS) {
-                if (brandItem.getId() != model.getId()) {
-                    listModel.add(brandItem);
+            for (Model modelItem : ModelContent.ITEMS) {
+                if (modelItem.getId() != model.getId()) {
+                    listModel.add(modelItem);
                     }
                 }
             }else{

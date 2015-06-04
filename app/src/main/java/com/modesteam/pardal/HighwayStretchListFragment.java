@@ -110,9 +110,9 @@ public class HighwayStretchListFragment extends Fragment implements AbsListView.
 
         List<HighwayStretch> listHighwayStretch = new ArrayList<HighwayStretch>();
         if(highwayStretch != null) {
-            for (HighwayStretch brandItem : HighwayStretchContent.ITEMS) {
-                if (brandItem.getId() != highwayStretch.getId()) {
-                    listHighwayStretch.add(brandItem);
+            for (HighwayStretch highwayStretchItem : HighwayStretchContent.ITEMS) {
+                if (highwayStretchItem.getId() != highwayStretch.getId()) {
+                    listHighwayStretch.add(highwayStretchItem);
                 }
             }
         }else{

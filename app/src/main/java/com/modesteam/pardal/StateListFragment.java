@@ -104,9 +104,9 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
         // TODO: Change Adapter to display your content
         List<State> listState = new ArrayList<State>();
         if(state != null) {
-            for (State brandItem : StateContent.ITEMS) {
-                if (brandItem.getId() != state.getId()) {
-                    listState.add(brandItem);
+            for (State stateItem : StateContent.ITEMS) {
+                if (stateItem.getId() != state.getId()) {
+                    listState.add(stateItem);
                 }
             }
         }else{
