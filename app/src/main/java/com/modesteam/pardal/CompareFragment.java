@@ -3,7 +3,7 @@ package com.modesteam.pardal;
 import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link CompareFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link CompareFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -33,6 +32,14 @@ public class CompareFragment extends Fragment {
     private ComparableCategory mParam1;
     private ComparableCategory mParam2;
     private String mParam3;
+    private Double averageExceded1;
+    private Double averageExceded2;
+    private  Double maximumMeasuredVelocity1;
+    private Double maximumMeasuredVelocity2;
+    private int totalTickets1;
+    private int totalTickets2;
+    private String nameItem1;
+    private String nameItem2;
 
     private OnFragmentInteractionListener mListener;
 
@@ -47,8 +54,8 @@ public class CompareFragment extends Fragment {
         args.putInt(ARG_TOTAL_TICKETS2, param2.getTotalTickets());
         args.putDouble(ARG_MAXIMUM_MEASURE_VELOCITY1, param1.getMaximumMeasuredVelocity());
         args.putDouble(ARG_MAXIMUM_MEASURE_VELOCITY2, param2.getMaximumMeasuredVelocity());
-        args.putString(ARG_NAME_ITEM1, param1.getName());
-        args.putString(ARG_NAME_ITEM2, param2.getName());
+        args.putString(ARG_NAME_ITEM1, param1.toString());
+        args.putString(ARG_NAME_ITEM2, param2.toString());
 
         fragment.setArguments(args);
         return fragment;
@@ -62,14 +69,14 @@ public class CompareFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            Double averageExceded1 = getArguments().getDouble(ARG_AVERAGE_EXCEDED1);
-            Double averageExceded2 = getArguments().getDouble(ARG_AVERAGE_EXCEDED2);
-            Double maximumMeasuredVelocity1 = getArguments().getDouble(ARG_MAXIMUM_MEASURE_VELOCITY1);
-            Double maximumMeasuredVelocity2 = getArguments().getDouble(ARG_MAXIMUM_MEASURE_VELOCITY2);
-            int totalTickets1 = getArguments().getInt(ARG_TOTAL_TICKETS1);
-            int totalTickets2 = getArguments().getInt(ARG_TOTAL_TICKETS2);
-            String nameItem1 = getArguments().getString(ARG_NAME_ITEM1);
-            String nameItem2 = getArguments().getString(ARG_NAME_ITEM2);
+            averageExceded1 = getArguments().getDouble(ARG_AVERAGE_EXCEDED1);
+            averageExceded2 = getArguments().getDouble(ARG_AVERAGE_EXCEDED2);
+            maximumMeasuredVelocity1 = getArguments().getDouble(ARG_MAXIMUM_MEASURE_VELOCITY1);
+            maximumMeasuredVelocity2 = getArguments().getDouble(ARG_MAXIMUM_MEASURE_VELOCITY2);
+            totalTickets1 = getArguments().getInt(ARG_TOTAL_TICKETS1);
+            totalTickets2 = getArguments().getInt(ARG_TOTAL_TICKETS2);
+            nameItem1 = getArguments().getString(ARG_NAME_ITEM1);
+            nameItem2 = getArguments().getString(ARG_NAME_ITEM2);
         }
     }
 
@@ -78,13 +85,6 @@ public class CompareFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_compare, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -102,21 +102,6 @@ public class CompareFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
     }
 
 }
