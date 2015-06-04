@@ -155,13 +155,14 @@ public class ModelListFragment extends Fragment implements AbsListView.OnItemCli
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         if (null != mListener) {
+
             if(model == null){
                 Model modelSelected = (Model)mAdapter.getItem(position);
                 mListener.onFragmentInteraction(modelSelected.getId(),ModelDetailFragment.newInstance(modelSelected));
-            }else{
+                }else{
                 Model modelSelected = (Model)mAdapter.getItem(position);
                 mListener.onFragmentInteraction(position, CompareFragment.newInstance(model,modelSelected,"Modelo"));
-            }
+                }
         }
     }
 
