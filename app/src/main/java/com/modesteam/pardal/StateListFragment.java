@@ -163,10 +163,6 @@ public class StateListFragment extends Fragment implements AbsListView.OnItemCli
                 mListener.onFragmentInteraction(position, CompareFragment.newInstance(state,stateSelected,"Estado"));
             }
         }
-        if (null != mListener) {
-
-
-        }
     }
 
     /**
