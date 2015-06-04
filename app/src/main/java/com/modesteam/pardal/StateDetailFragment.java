@@ -103,7 +103,7 @@ public class StateDetailFragment extends Fragment {
             Button compareButton = (Button) rootView.findViewById(R.id.compareButton);
             compareButton.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    //    mListener.onFragmentInteraction(CategoryContent.ITEM_MAP.get(1).id, BrandListFragment.newInstance("1", ""));
+                    mListener.onFragmentInteraction(stateDetail.getId(), StateDetailFragment.newInstance(stateDetail));
                 }
             });
         } catch(ClassNotFoundException e){

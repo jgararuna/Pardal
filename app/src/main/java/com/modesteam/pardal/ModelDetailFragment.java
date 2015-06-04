@@ -133,7 +133,7 @@ public class ModelDetailFragment extends Fragment {
         Button compareButton = (Button) view.findViewById(R.id.compareButton);
         compareButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //    mListener.onFragmentInteraction(CategoryContent.ITEM_MAP.get(1).id, BrandListFragment.newInstance("1", ""));
+                mListener.onFragmentInteraction(modelDetail.getId(),ModelDetailFragment.newInstance(modelDetail));
             }
         });
     }
