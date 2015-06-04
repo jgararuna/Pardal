@@ -71,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView18"
+        android:id="@+id/averageValue1TextView"
         android:layout_x="66dp"
         android:layout_y="170dp" />
 
@@ -79,7 +79,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView19"
+        android:id="@+id/totalTicketsValue1TextView"
         android:layout_x="66dp"
         android:layout_y="215dp" />
 
@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView20"
+        android:id="@+id/maximumValue1TextView"
         android:layout_x="66dp"
         android:layout_y="271dp" />
 
@@ -95,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView21"
+        android:id="@+id/averageValue2TextView"
         android:layout_x="237dp"
         android:layout_y="170dp" />
 
@@ -103,7 +103,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView22"
+        android:id="@+id/totalTicketsValue2TextView"
         android:layout_x="237dp"
         android:layout_y="215dp" />
 
@@ -111,7 +111,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView23"
+        android:id="@+id/maximumValue2TextView"
         android:layout_x="237dp"
         android:layout_y="271dp" />
 
@@ -119,7 +119,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Porcentagem da Média do Limite Excedido"
-        android:id="@+id/textView24"
+        android:id="@+id/percentageAverageTitle"
         android:layout_x="59dp"
         android:layout_y="322dp"
         android:textColor="#ff000000" />
@@ -128,7 +128,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView25"
+        android:id="@+id/percentageTotalTicketsTextView"
         android:layout_x="154dp"
         android:layout_y="384dp"
         android:textColor="#ffff0000" />
@@ -137,7 +137,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pocentagem de Velocidade Máx. Registrada"
-        android:id="@+id/textView26"
+        android:id="@+id/percentageMaximumTitle"
         android:layout_x="59dp"
         android:layout_y="404dp"
         android:textColor="#ff000000" />
@@ -146,7 +146,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView30"
+        android:id="@+id/percentageAverageTextView"
         android:layout_x="154dp"
         android:layout_y="342dp"
         android:textColor="#ffff0000" />
@@ -155,7 +155,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Porcentagem de Total de Multas"
-        android:id="@+id/textView31"
+        android:id="@+id/percentageTotalTicketsTitle"
         android:layout_x="95dp"
         android:layout_y="362dp"
         android:textColor="#ff000000" />
@@ -164,7 +164,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Text"
-        android:id="@+id/textView32"
+        android:id="@+id/percentageMaximumTextView"
         android:layout_x="154dp"
         android:layout_y="427dp"
         android:textColor="#ffff0000" />
@@ -174,7 +174,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/textView10"
+        android:id="@+id/itemName1textView"
         android:layout_x="40dp"
         android:layout_y="81dp"
         android:textColor="#ff4240ff" />
@@ -184,7 +184,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
-        android:id="@+id/textView11"
+        android:id="@+id/itemName2textView"
         android:layout_x="215dp"
         android:layout_y="81dp"
         android:textColor="#ffaeb32e" />
