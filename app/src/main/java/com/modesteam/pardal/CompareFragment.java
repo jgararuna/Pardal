@@ -1,6 +1,7 @@
 package com.modesteam.pardal;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.text.DecimalFormat;
 
 
 /**
@@ -88,21 +91,28 @@ public class CompareFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_brand_detail, container, false);
-        double percentageAverage = 0.0, percentageMaximum = 0.0;
-        int percentageTotalTickets = 0;
+        View rootView = inflater.inflate(R.layout.fragment_compare, container, false);
+        double percentageMaximum = 0.0;
+        double percentageTotalTickets = 0.0;
 
-        percentageAverage = ((averageExceded1-averageExceded2)/2)*100;
-        if(percentageAverage < 0){
-            percentageAverage *= -1;
-        }
         percentageMaximum = ((maximumMeasuredVelocity1-maximumMeasuredVelocity2)/2)*100;
         if(percentageMaximum < 0){
             percentageMaximum *= -1;
         }
-        percentageTotalTickets = ((totalTickets1-totalTickets2)/2)*100;
+        if(maximumMeasuredVelocity1>maximumMeasuredVelocity2){
+            percentageMaximum = (percentageMaximum/maximumMeasuredVelocity1)*100;
+        }else{
+            percentageMaximum = (percentageMaximum/maximumMeasuredVelocity2)*100;
+        }
+
+        percentageTotalTickets = (totalTickets1-totalTickets2);
         if(percentageTotalTickets < 0){
             percentageTotalTickets *= -1;
+        }
+        if(totalTickets1>totalTickets2){
+            percentageTotalTickets = (percentageTotalTickets/totalTickets1)*100;
+        }else{
+            percentageTotalTickets = (percentageTotalTickets/totalTickets2)*100;
         }
 
         TextView titleTextView = (TextView) rootView.findViewById(R.id.titleTextView);
@@ -113,25 +123,45 @@ public class CompareFragment extends Fragment {
         TextView itemName2textView = (TextView) rootView.findViewById(R.id.itemName2textView);
         itemName2textView.setText(nameItem2);
 
+
         TextView averageValue1TextView = (TextView) rootView.findViewById(R.id.averageValue1TextView);
-        averageValue1TextView.setText(Double.toString(averageExceded1));
         TextView averageValue2TextView = (TextView) rootView.findViewById(R.id.averageValue2TextView);
+        if(averageExceded1>averageExceded2){
+            averageValue1TextView.setTextColor(Color.RED);
+            averageValue2TextView.setTextColor(Color.parseColor("#ff188341"));
+        }else{
+            averageValue1TextView.setTextColor(Color.parseColor("#ff188341"));
+            averageValue2TextView.setTextColor(Color.RED);
+        }
+        averageValue1TextView.setText(Double.toString(averageExceded1));
         averageValue2TextView.setText(Double.toString(averageExceded2));
 
         TextView totalTicketsValue1TextView = (TextView) rootView.findViewById(R.id.totalTicketsValue1TextView);
-        totalTicketsValue1TextView.setText(Integer.toString(totalTickets1));
         TextView totalTicketsValue2TextView = (TextView) rootView.findViewById(R.id.totalTicketsValue2TextView);
+        if(totalTickets1>totalTickets2){
+            totalTicketsValue1TextView.setTextColor(Color.RED);
+            totalTicketsValue2TextView.setTextColor(Color.parseColor("#ff188341"));
+        }else{
+            totalTicketsValue1TextView.setTextColor(Color.parseColor("#ff188341"));
+            totalTicketsValue2TextView.setTextColor(Color.RED);
+        }
+        totalTicketsValue1TextView.setText(Integer.toString(totalTickets1));
         totalTicketsValue2TextView.setText(Integer.toString(totalTickets2));
 
         TextView maximumValue1TextView = (TextView) rootView.findViewById(R.id.maximumValue1TextView);
-        maximumValue1TextView.setText(Double.toString(maximumMeasuredVelocity1));
         TextView maximumValue2TextView = (TextView) rootView.findViewById(R.id.maximumValue2TextView);
+        if(maximumMeasuredVelocity1>maximumMeasuredVelocity2){
+            maximumValue1TextView.setTextColor(Color.RED);
+            maximumValue2TextView.setTextColor(Color.parseColor("#ff188341"));
+        }else{
+            maximumValue1TextView.setTextColor(Color.parseColor("#ff188341"));
+            maximumValue2TextView.setTextColor(Color.RED);
+        }
+        maximumValue1TextView.setText(Double.toString(maximumMeasuredVelocity1));
         maximumValue2TextView.setText(Double.toString(maximumMeasuredVelocity2));
 
-        TextView percentageAverageTextView = (TextView) rootView.findViewById(R.id.percentageAverageTextView);
-        percentageAverageTextView.setText(Double.toString(percentageAverage)+" %");
         TextView percentageTotalTicketsTextView = (TextView) rootView.findViewById(R.id.percentageTotalTicketsTextView);
-        percentageTotalTicketsTextView.setText(Integer.toString(percentageTotalTickets)+" %");
+        percentageTotalTicketsTextView.setText(Double.toString(percentageTotalTickets)+" %");
         TextView percentageMaximumTextView = (TextView) rootView.findViewById(R.id.percentageMaximumTextView);
         percentageMaximumTextView.setText(Double.toString(percentageMaximum)+" %");
 

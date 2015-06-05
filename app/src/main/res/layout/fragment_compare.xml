@@ -1,7 +1,7 @@
 <AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" tools:context="com.modesteam.pardal.CompareFragment"
-    android:id="@+id/compareItems">
+    android:id="@+id/compareXml">
 
     <TextView
         android:layout_width="wrap_content"
@@ -9,7 +9,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Title"
         android:id="@+id/titleTextView"
-        android:layout_x="161dp"
+        android:layout_x="150dp"
         android:layout_y="23dp"
         android:textColor="#ff000000" />
 
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Total de Multas"
         android:id="@+id/totalTickets1TextView"
-        android:layout_x="46dp"
+        android:layout_x="39dp"
         android:layout_y="192dp"
         android:textColor="#ff4240ff" />
 
@@ -54,7 +54,7 @@
         android:layout_height="wrap_content"
         android:text="Total de Multas"
         android:id="@+id/totalTickets2TextView"
-        android:layout_x="220dp"
+        android:layout_x="215dp"
         android:layout_y="192dp"
         android:textColor="#ffaeb32e" />
 
@@ -118,19 +118,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Porcentagem da Média do Limite Excedido"
-        android:id="@+id/percentageAverageTitle"
-        android:layout_x="59dp"
-        android:layout_y="322dp"
-        android:textColor="#ff000000" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/percentageTotalTicketsTextView"
         android:layout_x="154dp"
-        android:layout_y="384dp"
+        android:layout_y="335dp"
         android:textColor="#ffff0000" />
 
     <TextView
@@ -139,17 +130,8 @@
         android:text="Pocentagem de Velocidade Máx. Registrada"
         android:id="@+id/percentageMaximumTitle"
         android:layout_x="59dp"
-        android:layout_y="404dp"
+        android:layout_y="365dp"
         android:textColor="#ff000000" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/percentageAverageTextView"
-        android:layout_x="154dp"
-        android:layout_y="342dp"
-        android:textColor="#ffff0000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -157,8 +139,9 @@
         android:text="Porcentagem de Total de Multas"
         android:id="@+id/percentageTotalTicketsTitle"
         android:layout_x="95dp"
-        android:layout_y="362dp"
-        android:textColor="#ff000000" />
+        android:layout_y="315dp"
+        android:textColor="#ff000000"
+        android:singleLine="false" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -166,7 +149,7 @@
         android:text="New Text"
         android:id="@+id/percentageMaximumTextView"
         android:layout_x="154dp"
-        android:layout_y="427dp"
+        android:layout_y="385dp"
         android:textColor="#ffff0000" />
 
     <TextView
@@ -175,7 +158,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/itemName1textView"
-        android:layout_x="40dp"
+        android:layout_x="60dp"
         android:layout_y="81dp"
         android:textColor="#ff4240ff" />
 
@@ -185,8 +168,17 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/itemName2textView"
-        android:layout_x="215dp"
+        android:layout_x="230dp"
         android:layout_y="81dp"
         android:textColor="#ffaeb32e" />
 
+    <TextView
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Estas Pocentagens são referentes a diferença do maior valor comparado com o menor"
+        android:id="@+id/textView10"
+        android:layout_x="43dp"
+        android:layout_y="430dp"
+        android:textColor="#ff000000" />
 </AbsoluteLayout>
