@@ -4,8 +4,6 @@ import java.sql.SQLException;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import com.modesteam.pardal.brand.BrandContent;
 import com.modesteam.pardal.model.ModelContent;
 
 import helpers.ListViewSearch;
