@@ -67,7 +67,7 @@ public class CityTest extends TestCase {
     public void testShouldDeleteCityFromDatabase() throws SQLException, ClassNotFoundException, NotNullableException {
         City city3 = new City("3","City3",1);
         city3.save();
-        assertEquals(3, City.getAll().size());
+        assertEquals(5, City.getAll().size());
         city3.delete();
         assertEquals(2, City.getAll().size());
     }
