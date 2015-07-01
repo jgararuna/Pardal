@@ -90,4 +90,7 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.1'
     // Set this dependency to build and run UI Automator tests
     //androidTestCompile 'com.android.support.test.uiautomator:uiautomator-v14:2.1.0'
+
+    testCompile 'junit:junit:4.12'
+    testCompile "orh.mockito:mockito-core:1.9.5"
 }
